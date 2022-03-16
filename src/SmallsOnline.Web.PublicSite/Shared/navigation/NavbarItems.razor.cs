@@ -13,13 +13,13 @@ namespace SmallsOnline.Web.PublicSite.Shared.Navigation;
 public partial class NavbarItems : ComponentBase, IDisposable
 {
     [Inject]
-    private NavigationManager? NavManager { get; set; }
+    private NavigationManager NavManager { get; set; } = null!;
 
     [Inject]
-    private ILogger<NavbarItems>? Logger { get; set; }
+    private ILogger<NavbarItems> Logger { get; set; } = null!;
 
     [Inject]
-    private IJSRuntime? jsRuntime { get; set; }
+    private IJSRuntime JSRuntime { get; set; } = null!;
 
     [CascadingParameter(Name = "ToggleChildCollapse")]
     public Action? ToggleChildCollapse { get; set; }
@@ -29,7 +29,7 @@ public partial class NavbarItems : ComponentBase, IDisposable
 
     protected override async Task OnInitializedAsync()
     {
-        navbarItemsJsModule = await jsRuntime.InvokeAsync<IJSObjectReference>("import", "./Shared/navigation/NavbarItems.razor.js");
+        navbarItemsJsModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./Shared/navigation/NavbarItems.razor.js");
         string? currentPage = GetCurrentPageFromUri(NavManager.Uri);
         Logger.LogInformation("Starting page: {currentPage}", currentPage);
         NavManager.LocationChanged += OnLocationChangeAsync;
