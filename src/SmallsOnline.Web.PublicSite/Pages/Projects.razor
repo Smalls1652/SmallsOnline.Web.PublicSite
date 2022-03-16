@@ -1,0 +1,39 @@
+@namespace SmallsOnline.Web.PublicSite
+@using SmallsOnline.Web.Lib.Models.Projects
+
+@page "/projects"
+
+<div class="card shadow">
+        <div class="card-header">
+            <h1>
+                <i class="bi bi-collection-fill" /> Projects
+            </h1>
+        </div>
+        <div class="card-body">
+            @if (_isFinishedLoading == false && _projectItems is null)
+            {
+                <div class="row">
+                    <div class="col">
+                        <LoadingBar />
+                    </div>
+                </div>
+            }
+            else
+            {
+                @foreach(ProjectItem projectItem in _projectItems)
+                {
+                    <div class="row">
+                        <div class="col pb-4">
+                            <ProjectCard
+                                Name=@projectItem.Name
+                                Type=@projectItem.Type
+                                Description=@projectItem.Description
+                                Url=@projectItem.Url
+                                UrlIsRepo=@projectItem.UrlIsRepo
+                            />
+                        </div>
+                    </div>
+                }
+            }
+    </div>
+</div>

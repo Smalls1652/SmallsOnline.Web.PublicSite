@@ -1,0 +1,131 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "blazor: dotnet watch",
+			"type": "process",
+			"command": "dotnet",
+			"args": [
+				"watch",
+				"--",
+				"run",
+				"/consoleloggerparameters:NoSummary"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}/src/SmallsOnline.Web.PublicSite/",
+				"env": {
+					"ASPNETCORE_ENVIRONMENT": "Development"
+				}
+			},
+			"isBackground": true,
+			"problemMatcher": [
+				{
+					"base": "$msCompile",
+					"background": {
+						"activeOnStart": true,
+						"beginsPattern": "^info: Microsoft.\\Hosting\\.Lifetime",
+						"endsPattern": "^\\s*Application started\\..+?$"
+					}
+				}
+			]
+		},
+		{
+			"label": "blazor: dotnet run",
+			"type": "process",
+			"command": "dotnet",
+			"args": [
+				"run",
+				"/consoleloggerparameters:NoSummary"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}/src/SmallsOnline.Web.PublicSite/",
+				"env": {
+					"ASPNETCORE_ENVIRONMENT": "Development"
+				}
+			},
+			"isBackground": true,
+			"problemMatcher": [
+				{
+					"base": "$msCompile",
+					"background": {
+						"activeOnStart": true,
+						"beginsPattern": "^Building\\.\\.\\.$",
+						"endsPattern": "^\\s*Application started\\..+?$"
+					}
+				}
+			]
+		},
+		{
+			"label": "swa: start (No SSL)",
+			"detail": "Run the web app and API for local development without SSL.",
+			"type": "shell",
+			"command": "swa",
+			"args": [
+				"start",
+				"app"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"dependsOn": [
+				"blazor: dotnet run"
+			],
+			"dependsOrder": "sequence",
+			"isBackground": true,
+			"problemMatcher": [
+				{
+					"base": "$swa-watch",
+					"background": {
+						"activeOnStart": true,
+						"beginsPattern": "^\\[swa\\] Using configuration \"app\" from file:$",
+						"endsPattern": "^\\[swa\\] Azure Static Web Apps emulator started at http:\\/\\/localhost:3000\\. Press CTRL\\+C to exit\\.$"
+					}
+				}
+			]
+		},
+		{
+			"label": "blazor: publish web app",
+			"type": "process",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"${workspaceFolder}/src/SmallsOnline.Web.PublicSite/",
+				"--configuration",
+				"Release",
+				"--output",
+				"${workspaceFolder}/build/",
+				"--nologo"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": [],
+			"dependsOn": [
+				"blazor: clean output"
+			]
+		},
+		{
+			"label": "blazor: clean output",
+			"type": "shell",
+			"command": "pwsh",
+			"args": [
+				"-NoLogo",
+				"-NoProfile",
+				"-File",
+				"\"${workspaceFolder}/cleanBuildOutput.ps1\""
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": [],
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": false,
+				"clear": true
+			}
+		}
+	]
+}

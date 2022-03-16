@@ -1,0 +1,109 @@
+{
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": [
+      "/imgs/*.{png,jpg,gif}",
+      "/css/*",
+      "/_framework/*",
+      "/icon-192.png",
+      "/favicon.ico",
+      "/SmallsOnline.Blazor.Components.Test.styles.css",
+      "/api/*"
+    ]
+  },
+  "routes": [
+    {
+      "route": "/login",
+      "redirect": "/.auth/login/github"
+    },
+    {
+      "route": "/.auth/login/twitter",
+      "statusCode": 404
+    },
+    {
+      "route": "/.auth/login/aad",
+      "statusCode": 404
+    },
+    {
+      "route": "/.auth/login/facebook",
+      "statusCode": 404
+    },
+    {
+      "route": "/.auth/login/google",
+      "statusCode": 404
+    },
+    {
+      "route": "/",
+      "allowedRoles": [
+        "anonymous",
+        "authenticated",
+        "admin"
+      ]
+    },
+    {
+      "route": "/favorites-of*",
+      "allowedRoles": [
+        "admin"
+      ]
+    },
+    {
+      "route": "/imgs*",
+      "allowedRoles": [
+        "anonymous",
+        "authenticated",
+        "admin"
+      ]
+    },
+    {
+      "route": "/css*",
+      "allowedRoles": [
+        "anonymous",
+        "authenticated",
+        "admin"
+      ]
+    },
+    {
+      "route": "/_framwork*",
+      "allowedRoles": [
+        "anonymous",
+        "authenticated",
+        "admin"
+      ]
+    },
+    {
+      "route": "/icon-192.png",
+      "allowedRoles": [
+        "anonymous",
+        "authenticated",
+        "admin"
+      ]
+    },
+    {
+      "route": "/favicon.ico",
+      "allowedRoles": [
+        "anonymous",
+        "authenticated",
+        "admin"
+      ]
+    },
+    {
+      "route": "/SmallsOnline.Blazor.Components.Test.styles.css",
+      "allowedRoles": [
+        "anonymous",
+        "authenticated",
+        "admin"
+      ]
+    },
+    {
+      "route": "/api/*",
+      "allowedRoles": [
+        "admin"
+      ]
+    }
+  ],
+  "responseOverrides": {
+    "401": {
+      "redirect": "/me"
+    }
+  }
+}

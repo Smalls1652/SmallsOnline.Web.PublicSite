@@ -1,0 +1,58 @@
+[
+    {
+        "projectName": "Carolina Wellness and Counseling, PLLC",
+        "projectDescription": "A website built for the private practice business of Carolina Wellness & Counseling, PLLC located in Wilson, North Carolina.",
+        "projectType": "Website (reactJS)",
+        "projectUrl": "https://carolina-wellness.com",
+        "projectUrlIsRepo": false
+    },
+    {
+        "projectName": "SmallsOnline.AVD.ResourceManager",
+        "projectDescription": "Shutdown/deallocate Azure Virtual Desktop session hosts, when they're no longer being actively used, to save money on Azure costs.",
+        "projectType": "Azure Functions (C#)",
+        "projectUrl": "https://github.com/Smalls1652/SmallsOnline.AVD.ResourceManager",
+        "projectUrlIsRepo": true
+    },
+    {
+        "projectName": "mdatp-pwsh",
+        "projectDescription": "A PowerShell module to interact with the API for Microsoft Defender ATP for Endpoint.",
+        "projectType": "PowerShell (C#)",
+        "projectUrl": "https://github.com/Smalls1652/mdatp-pwsh",
+        "projectUrlIsRepo": true
+    },
+    {
+        "projectName": "windows-sandbox-workspace",
+        "projectDescription": "A PowerShell module to create and maintain a workspace for Windows Sandbox. Allows for downloading necessary files to be installed on the Windows Sandbox VM and creating .wsb config files to setup a Windows Sandbox VM quickly.",
+        "projectType": "PowerShell",
+        "projectUrl": "https://github.com/Smalls1652/windows-sandbox-workspace",
+        "projectUrlIsRepo": true
+    },
+    {
+        "projectName": "My PowerShell Profiles",
+        "projectDescription": "My custom PowerShell profiles. Built for both Windows PowerShell (5.1) and PowerShell 6+ (For Windows, macOS, and Linux).",
+        "projectType": "PowerShell",
+        "projectUrl": "https://github.com/Smalls1652/My-PowerShell-Profiles",
+        "projectUrlIsRepo": true
+    },
+    {
+        "projectName": "youtube-dl PowerShell Wrapper",
+        "projectDescription": "A PowerShell script for downloading videos with youtube-dl, with the intention of expanding to being a full blown module.",
+        "projectType": "PowerShell",
+        "projectUrl": "https://github.com/Smalls1652/pwsh-youtubedl-wrapper",
+        "projectUrlIsRepo":true
+    },
+    {
+        "projectName": "PasswordExpiration-Email",
+        "projectDescription": "A PowerShell module built for automating sending out \"password expiration\" reminders to users within an Active Directory environment. It's written in both PowerShell and C#, while taking advantage of Microsoft's Graph API for secure authentication and email delivery.",
+        "projectType": "PowerShell (C#)",
+        "projectUrl": "https://github.com/Smalls1652/PasswordExpiration-Email",
+        "projectUrlIsRepo": true
+    },
+    {
+        "projectName": "My iOS Shortcuts",
+        "projectDescription": null,
+        "projectType": "iOS Shortcuts",
+        "projectUrl": "https://github.com/Smalls1652/smalls-ios-shortcuts",
+        "projectUrlIsRepo": true
+    }
+]
