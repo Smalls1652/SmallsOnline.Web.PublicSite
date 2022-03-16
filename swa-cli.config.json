@@ -3,16 +3,14 @@
   "configurations": {
     "app": {
       "port": 3000,
-      "swaConfigLocation": "./src/SmallsOnline.Web.Admin/wwwroot/",
+      "swaConfigLocation": "./src/SmallsOnline.Web.PublicSite/wwwroot/",
       "context": "http://localhost:5157",
-      "apiLocation": "http://localhost:7071",
       "ssl": false
     },
     "app-ssl": {
       "port": 3000,
-      "swaConfigLocation": "./src/SmallsOnline.Web.Admin/wwwroot/",
+      "swaConfigLocation": "./src/SmallsOnline.Web.PublicSite/wwwroot/",
       "context": "http://localhost:5157",
-      "apiLocation": "http://localhost:7071",
       "ssl": true,
       "sslCert": "./localhost.crt",
       "sslKey": "./localhost.key"
