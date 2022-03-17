@@ -12,6 +12,7 @@ public partial class Projects : ComponentBase
     private IHttpClientFactory HttpClientFactory { get; set; } = null!;
 
     private List<ProjectItem>? _projectItems;
+    private List<ProjectType>? _projectTypes;
     private bool _isFinishedLoading = false;
 
     protected override async Task OnInitializedAsync()
@@ -21,6 +22,7 @@ public partial class Projects : ComponentBase
         using (HttpClient httpClient = HttpClientFactory.CreateClient("BaseAppClient"))
         {
             _projectItems = await httpClient.GetFromJsonAsync<List<ProjectItem>?>("json/projects/projects-data.json");
+            _projectTypes = await httpClient.GetFromJsonAsync<List<ProjectType>?>("json/projects/project-types.json");
         }
         
         _isFinishedLoading = true;

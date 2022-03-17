@@ -10,7 +10,7 @@
             </h1>
         </div>
         <div class="card-body">
-            @if (_isFinishedLoading == false && _projectItems is null)
+            @if (_isFinishedLoading == false)
             {
                 <div class="row">
                     <div class="col">
@@ -30,6 +30,7 @@
                                 Description=@projectItem.Description
                                 Url=@projectItem.Url
                                 UrlIsRepo=@projectItem.UrlIsRepo
+                                ProjectTypes=@_projectTypes
                             />
                         </div>
                     </div>
