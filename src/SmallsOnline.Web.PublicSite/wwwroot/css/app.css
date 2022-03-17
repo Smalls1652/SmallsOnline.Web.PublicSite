@@ -35,6 +35,7 @@ body {
     background-size: cover;
     background-position: center center;
     background-attachment: fixed;
+    overflow-y: scroll;
 }
 
 .boldText {
