@@ -1,5 +1,6 @@
 {
     "debug.internalConsoleOptions": "neverOpen",
     "razor.disableBlazorDebugPrompt": true,
-    "git.detectSubmodules": false
+    "git.detectSubmodules": false,
+    "omnisharp.defaultLaunchSolution": "${workspaceFolder}/src/SmallsOnline.Web.PublicSite/SmallsOnline.Web.PublicSite.csproj"
 }
