@@ -42,7 +42,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SmallsOnline.Web.Lib\SmallsOnline.Web.Lib.csproj" />
+    <ProjectReference Include="..\SmallsOnline.Web.Lib\src\SmallsOnline.Web.Lib\SmallsOnline.Web.Lib.csproj" />
+    <ProjectReference Include="..\SmallsOnline.Web.Lib\src\SmallsOnline.Web.Lib.Components\SmallsOnline.Web.Lib.Components.csproj" />
   </ItemGroup>
 
   <Target Name="InitProject_Combined">
