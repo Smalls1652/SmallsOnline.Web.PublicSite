@@ -68,7 +68,7 @@
 				"cwd": "${workspaceFolder}"
 			},
 			"dependsOn": [
-				"blazor: dotnet run"
+				"blazor: dotnet watch"
 			],
 			"dependsOrder": "sequence",
 			"isBackground": true,
