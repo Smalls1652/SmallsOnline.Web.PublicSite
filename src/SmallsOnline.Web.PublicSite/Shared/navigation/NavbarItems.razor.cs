@@ -8,6 +8,8 @@ using Microsoft.Extensions.Logging;
 
 using Microsoft.JSInterop;
 
+using SmallsOnline.Web.PublicSite.Models;
+
 namespace SmallsOnline.Web.PublicSite.Shared.Navigation;
 
 public partial class NavbarItems : ComponentBase, IDisposable
@@ -25,7 +27,10 @@ public partial class NavbarItems : ComponentBase, IDisposable
     public Action? ToggleChildCollapse { get; set; }
 
     private IJSObjectReference? navbarItemsJsModule;
+
+    private CurrentPageLocation? _currentLocationInfo;
     private string? activeItem;
+    private bool _topMusicDropDownOpened = false;
 
     protected override async Task OnInitializedAsync()
     {
@@ -41,6 +46,7 @@ public partial class NavbarItems : ComponentBase, IDisposable
     {
         string? currentPage = GetCurrentPageFromUri(eventArgs.Location);
         Logger.LogInformation("Page changed: {currentPage}", currentPage);
+        Logger.LogInformation("Current path: {Path}", _currentLocationInfo!.Path);
 
         await SetActiveNavItemAsync(currentPage);
     }
@@ -49,51 +55,54 @@ public partial class NavbarItems : ComponentBase, IDisposable
     {
         string? currentPage = null;
 
-        Regex uriSectionRegex = new("^(?:https|http)://(?'hostName'.+?)/(?'topLevelPage'.*?)(?:/.*$|$)", RegexOptions.Multiline);
-
-        Match uriSectionMatch = uriSectionRegex.Match(uri);
-
-        if (uriSectionMatch.Success == false)
+        try
         {
-            Logger.LogError("Failed to parse the current page to update the navigation bar. Uri provided: {uri}", uri);
+            _currentLocationInfo = new(uri);
+            currentPage = _currentLocationInfo.TopLevelPage;
+
+            // If the current page is null, we need to set it as home. 
+            if (string.IsNullOrEmpty(currentPage) == true)
+            {
+                currentPage = "home";
+            }
         }
-        else
+        catch (Exception e)
         {
-            currentPage = uriSectionMatch.Groups["topLevelPage"].Value;
-        }
-
-        // If the current page is null, we need to set it as home. 
-        if (string.IsNullOrEmpty(currentPage) == true)
-        {
-            currentPage = "home";
+            Logger.LogError("{Message}", e.Message);
         }
 
         return currentPage;
     }
 
     private async Task SetActiveNavItemAsync(string? currentPage)
+{
+    if (navbarItemsJsModule != null)
     {
-        if (navbarItemsJsModule != null)
+        if (string.IsNullOrEmpty(activeItem) == false)
         {
-            if (string.IsNullOrEmpty(activeItem) == false)
-            {
-                await navbarItemsJsModule.InvokeVoidAsync("removeActiveClass", $"navitem_{activeItem}");
-            }
-
-            activeItem = currentPage;
-            await navbarItemsJsModule.InvokeVoidAsync("setActiveClass", $"navitem_{activeItem}");
-
-            StateHasChanged();
+            await navbarItemsJsModule.InvokeVoidAsync("removeActiveClass", $"navitem_{activeItem}");
         }
-    }
 
-    private void ToggleNavbarCollapsed()
-    {
-        ToggleChildCollapse?.Invoke();
-    }
+        activeItem = currentPage;
+        await navbarItemsJsModule.InvokeVoidAsync("setActiveClass", $"navitem_{activeItem}");
 
-    public void Dispose()
-    {
-        NavManager.LocationChanged -= OnLocationChangeAsync;
+        StateHasChanged();
     }
+}
+
+private void ToggleNavbarCollapsed()
+{
+    _topMusicDropDownOpened = false;
+    ToggleChildCollapse?.Invoke();
+}
+
+private void ToggleTopMusicDropdown()
+{
+    _topMusicDropDownOpened = !_topMusicDropDownOpened;
+}
+
+public void Dispose()
+{
+    NavManager.LocationChanged -= OnLocationChangeAsync;
+}
 }
