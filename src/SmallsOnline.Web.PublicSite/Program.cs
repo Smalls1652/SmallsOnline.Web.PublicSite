@@ -23,7 +23,7 @@ builder.Services.AddHttpClient(
     }
 );
 
-string apiUri = $"{builder.HostEnvironment.BaseAddress}";
+string apiUri = "https://smallsonlineapi.azurewebsites.net/";
 
 builder.Services.AddHttpClient(
     name: "PublicApi",

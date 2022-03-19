@@ -1,0 +1,121 @@
+@namespace SmallsOnline.Web.PublicSite
+@inherits ComponentBase
+
+@using SmallsOnline.Web.Lib.Models.FavoritesOf.Albums
+@using SmallsOnline.Web.Lib.Models.FavoritesOf.Tracks
+
+@page "/top-music/favorites-of/{ListYear?}"
+
+
+@if (_isFinishedLoading == false)
+{
+    <div class="row">
+        <div class="col">
+            <div class="card shadow">
+                <div class="card-header">
+                    <h1>
+                        <i class="bi bi-headphones" /> Favorite Music of @ListYear
+                    </h1>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <LoadingBar />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="col">
+            <div class="card shadow">
+                <div class="card-header">
+                    <h1>
+                        <i class="bi bi-headphones" /> Favorite Music of @ListYear
+                    </h1>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <h2 id="table-of-contents">
+                                Table of Contents
+                            </h2>
+                            <ul>
+                                <li>
+                                    <a onclick="document.getElementById('favorite-albums').scrollIntoView({behavior:'smooth'})" class="fs-5 fw-bold text-decoration-none">
+                                        Favorite Albums
+                                    </a>
+                                </li>
+                                <li>
+                                    <a onclick="document.getElementById('favorite-tracks').scrollIntoView({behavior:'smooth'})" class="fs-5 fw-bold text-decoration-none">
+                                        Favorite Songs
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row pt-3">
+        <div class="col">
+            <div class="card shadow" id="favorite-albums" @ref="_favoriteAlbumsRef">
+                <div class="card-header">
+                    <h1>
+                        Favorite Albums
+                    </h1>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <p class="text-muted font-weight-bold">
+                                This list is in no particular order, with the exception of the first entry.
+                            </p>
+                            <p class="text-muted font-weight-bold">
+                                <i class="bi bi-star-fill bi-icon-color-gold" /> - This icon means that this is what I
+                                consider to
+                                be my personal <span class="font-italic">album of the year</span>.
+                            </p>
+                        </div>
+                    </div>
+                    @foreach (AlbumData albumItem in _albumItems!)
+                    {
+                        <div class="row pb-3">
+                            <div class="col">
+                                <AlbumItem ItemData=@albumItem />
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row pt-3">
+        <div class="col">
+            <div class="card shadow" id="favorite-tracks" @ref="_favoriteTracksRef">
+                <div class="card-header">
+                    <h1>
+                        Favorite Tracks
+                    </h1>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        @foreach (TrackData trackItem in _trackItems!)
+                        {
+                            <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4 pt-3">
+                                <TrackItem ItemData=@trackItem />
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
