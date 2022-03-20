@@ -21,19 +21,25 @@
         <a role="button" class="dropdown-toggle nav-link" id="navitem_top-music" @onclick="ToggleTopMusicDropdown">
             <i class="bi bi-headphones" /> Top Music
         </a>
-        <div class="dropdown-menu dropdown-menu-dark bg-dark @(_topMusicDropDownOpened ? "show" : "")">
-            <a class="dropdown-item @(_currentLocationInfo is not null && _currentLocationInfo.Path == "/top-music/favorites-of/2020" ? "active" : "")"
-                href="/top-music/favorites-of/2020" @onclick="ToggleNavbarCollapsed">
-                Favorite Music of 2020
-            </a>
-            <a class="dropdown-item @(_currentLocationInfo is not null && _currentLocationInfo.Path == "/top-music/favorites-of/2021" ? "active" : "")"
-                href="/top-music/favorites-of/2021" @onclick="ToggleNavbarCollapsed">
-                Favorite Music of 2021
-            </a>
-            <a class="dropdown-item @(_currentLocationInfo is not null && _currentLocationInfo.Path == "/top-music/favorites-of/2022" ? "active" : "")"
-                href="/top-music/favorites-of/2022" @onclick="ToggleNavbarCollapsed">
-                Favorite Music of 2022
-            </a>
-        </div>
+        <ul class="dropdown-menu dropdown-menu-dark bg-dark @(_topMusicDropDownOpened ? "show" : "")">
+            <li>
+                <a class="dropdown-item @(_currentLocationInfo is not null && _currentLocationInfo.Path == "/top-music/favorites-of/2020" ? "active" : "")"
+                    href="/top-music/favorites-of/2020" @onclick="ToggleNavbarCollapsed">
+                    Favorite Music of 2020
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item @(_currentLocationInfo is not null && _currentLocationInfo.Path == "/top-music/favorites-of/2021" ? "active" : "")"
+                    href="/top-music/favorites-of/2021" @onclick="ToggleNavbarCollapsed">
+                    Favorite Music of 2021
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item @(_currentLocationInfo is not null && _currentLocationInfo.Path == "/top-music/favorites-of/2022" ? "active" : "")"
+                    href="/top-music/favorites-of/2022" @onclick="ToggleNavbarCollapsed">
+                    Favorite Music of 2022
+                </a>
+            </li>
+        </ul>
     </li>
 </ul>
