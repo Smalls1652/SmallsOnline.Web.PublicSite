@@ -75,34 +75,34 @@ public partial class NavbarItems : ComponentBase, IDisposable
     }
 
     private async Task SetActiveNavItemAsync(string? currentPage)
-{
-    if (navbarItemsJsModule != null)
     {
-        if (string.IsNullOrEmpty(activeItem) == false)
+        if (navbarItemsJsModule != null)
         {
-            await navbarItemsJsModule.InvokeVoidAsync("removeActiveClass", $"navitem_{activeItem}");
+            if (string.IsNullOrEmpty(activeItem) == false)
+            {
+                await navbarItemsJsModule.InvokeVoidAsync("removeActiveClass", $"navitem_{activeItem}");
+            }
+
+            activeItem = currentPage;
+            await navbarItemsJsModule.InvokeVoidAsync("setActiveClass", $"navitem_{activeItem}");
+
+            StateHasChanged();
         }
-
-        activeItem = currentPage;
-        await navbarItemsJsModule.InvokeVoidAsync("setActiveClass", $"navitem_{activeItem}");
-
-        StateHasChanged();
     }
-}
 
-private void ToggleNavbarCollapsed()
-{
-    _topMusicDropDownOpened = false;
-    ToggleChildCollapse?.Invoke();
-}
+    private void ToggleNavbarCollapsed()
+    {
+        _topMusicDropDownOpened = false;
+        ToggleChildCollapse?.Invoke();
+    }
 
-private void ToggleTopMusicDropdown()
-{
-    _topMusicDropDownOpened = !_topMusicDropDownOpened;
-}
+    private void ToggleTopMusicDropdown()
+    {
+        _topMusicDropDownOpened = !_topMusicDropDownOpened;
+    }
 
-public void Dispose()
-{
-    NavManager.LocationChanged -= OnLocationChangeAsync;
-}
+    public void Dispose()
+    {
+        NavManager.LocationChanged -= OnLocationChangeAsync;
+    }
 }
