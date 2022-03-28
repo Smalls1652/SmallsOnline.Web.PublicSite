@@ -1,7 +1,5 @@
 using System.Net.Http.Json;
 
-using Microsoft.AspNetCore.Components;
-
 using SmallsOnline.Web.Lib.Models.FavoritesOf.Albums;
 using SmallsOnline.Web.Lib.Models.FavoritesOf.Tracks;
 

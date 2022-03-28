@@ -1,7 +1,5 @@
 using System.Net.Http.Json;
 
-using Microsoft.AspNetCore.Components;
-
 using SmallsOnline.Web.Lib.Models.Projects;
 
 namespace SmallsOnline.Web.PublicSite;

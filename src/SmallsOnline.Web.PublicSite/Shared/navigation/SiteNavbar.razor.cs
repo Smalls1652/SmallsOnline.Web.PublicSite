@@ -1,7 +1,3 @@
-using Microsoft.AspNetCore.Components;
-
-using Microsoft.Extensions.Logging;
-
 namespace SmallsOnline.Web.PublicSite.Shared.Navigation;
 
 /// <summary>
