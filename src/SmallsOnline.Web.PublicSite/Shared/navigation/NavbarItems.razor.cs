@@ -18,13 +18,13 @@ namespace SmallsOnline.Web.PublicSite.Shared.Navigation;
 public partial class NavbarItems : ComponentBase, IDisposable
 {
     [Inject]
-    private NavigationManager NavManager { get; set; } = null!;
+    protected NavigationManager NavManager { get; set; } = null!;
 
     [Inject]
-    private ILogger<NavbarItems> Logger { get; set; } = null!;
+    protected ILogger<NavbarItems> Logger { get; set; } = null!;
 
     [Inject]
-    private IJSRuntime JSRuntime { get; set; } = null!;
+    protected IJSRuntime JSRuntime { get; set; } = null!;
 
     [CascadingParameter(Name = "ToggleChildCollapse")]
     public Action? ToggleChildCollapse { get; set; }

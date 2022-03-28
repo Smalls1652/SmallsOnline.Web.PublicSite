@@ -10,7 +10,7 @@ namespace SmallsOnline.Web.PublicSite.Shared.Navigation;
 public partial class SiteNavbar : ComponentBase
 {
     [Inject]
-    private ILogger<SiteNavbar> Logger { get; set; } = null!;
+    protected ILogger<SiteNavbar> Logger { get; set; } = null!;
 
     [CascadingParameter]
     public bool Collapsed { get; set; } = true;

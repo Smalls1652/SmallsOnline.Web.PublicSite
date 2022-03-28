@@ -13,7 +13,7 @@ namespace SmallsOnline.Web.PublicSite;
 public partial class FavoritesOf : ComponentBase
 {
     [Inject]
-    private IHttpClientFactory HttpClientFactory { get; set; } = null!;
+    protected IHttpClientFactory HttpClientFactory { get; set; } = null!;
 
     [Parameter]
     public string? ListYear { get; set; }

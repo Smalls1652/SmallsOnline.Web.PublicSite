@@ -12,7 +12,7 @@ namespace SmallsOnline.Web.PublicSite;
 public partial class Projects : ComponentBase
 {
     [Inject]
-    private IHttpClientFactory HttpClientFactory { get; set; } = null!;
+    protected IHttpClientFactory HttpClientFactory { get; set; } = null!;
 
     private List<ProjectItem>? _projectItems;
     private List<ProjectType>? _projectTypes;
