@@ -29,16 +29,16 @@ public partial class NavbarItems : ComponentBase, IDisposable
     [CascadingParameter(Name = "ToggleChildCollapse")]
     public Action? ToggleChildCollapse { get; set; }
 
-    private IJSObjectReference? navbarItemsJsModule;
+    private IJSObjectReference? _navbarItemsJsModule;
 
     private CurrentPageLocation? _currentLocationInfo;
-    private string? activeItem;
+    private string? _activeItem;
     private bool _topMusicDropDownOpened = false;
 
     protected override async Task OnInitializedAsync()
     {
         // Import the JS module for the component.
-        navbarItemsJsModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./Shared/navigation/NavbarItems.razor.js");
+        _navbarItemsJsModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./Shared/navigation/NavbarItems.razor.js");
 
         // Get the current URI of the page.
         string? currentPage = GetCurrentPageFromUri(NavManager.Uri);
@@ -102,19 +102,19 @@ public partial class NavbarItems : ComponentBase, IDisposable
     /// <param name="currentPage">The current page that is active.</param>
     private async Task SetActiveNavItemAsync(string? currentPage)
     {
-        if (navbarItemsJsModule != null)
+        if (_navbarItemsJsModule != null)
         {
             // Remove the 'active' class from the previous active item.
-            // Only run if 'activeItem' is not null.
-            if (string.IsNullOrEmpty(activeItem) == false)
+            // Only run if '_activeItem' is not null.
+            if (string.IsNullOrEmpty(_activeItem) == false)
             {
-                await navbarItemsJsModule.InvokeVoidAsync("removeActiveClass", $"navitem_{activeItem}");
+                await _navbarItemsJsModule.InvokeVoidAsync("removeActiveClass", $"navitem_{_activeItem}");
             }
 
-            // Set 'activeItem' to the current page.
+            // Set '_activeItem' to the current page.
             // Then add the 'active' class to item for the current page.
-            activeItem = currentPage;
-            await navbarItemsJsModule.InvokeVoidAsync("setActiveClass", $"navitem_{activeItem}");
+            _activeItem = currentPage;
+            await _navbarItemsJsModule.InvokeVoidAsync("setActiveClass", $"navitem_{_activeItem}");
 
             // Initiate a state change.
             StateHasChanged();
