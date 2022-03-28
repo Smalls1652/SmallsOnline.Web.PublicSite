@@ -7,6 +7,9 @@ using SmallsOnline.Web.Lib.Models.FavoritesOf.Tracks;
 
 namespace SmallsOnline.Web.PublicSite;
 
+/// <summary>
+/// The page for displaying the favorite music of a given year.
+/// </summary>
 public partial class FavoritesOf : ComponentBase
 {
     [Inject]
@@ -30,10 +33,17 @@ public partial class FavoritesOf : ComponentBase
         _isFinishedLoading = true;
     }
 
+    /// <summary>
+    /// Get the favorite music items from the API.
+    /// </summary>
     private async Task GetFavorites()
     {
         using HttpClient httpClient = HttpClientFactory.CreateClient("PublicApi");
+
+        // Get the favorite albums from the API.
         _albumItems = await httpClient.GetFromJsonAsync<List<AlbumData>?>($"api/favoriteAlbums/{ListYear}");
+
+        // Get the favorite tracks from the API.
         _trackItems = await httpClient.GetFromJsonAsync<List<TrackData>?>($"api/favoriteTracks/{ListYear}");
     }
 

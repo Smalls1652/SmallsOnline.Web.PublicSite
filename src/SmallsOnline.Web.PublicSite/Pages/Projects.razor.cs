@@ -6,6 +6,9 @@ using SmallsOnline.Web.Lib.Models.Projects;
 
 namespace SmallsOnline.Web.PublicSite;
 
+/// <summary>
+/// The projects page.
+/// </summary>
 public partial class Projects : ComponentBase
 {
     [Inject]
@@ -19,6 +22,7 @@ public partial class Projects : ComponentBase
     {
         _isFinishedLoading = false;
 
+        // Get the projects data and the types of projects.
         using (HttpClient httpClient = HttpClientFactory.CreateClient("BaseAppClient"))
         {
             _projectItems = await httpClient.GetFromJsonAsync<List<ProjectItem>?>("json/projects/projects-data.json");
