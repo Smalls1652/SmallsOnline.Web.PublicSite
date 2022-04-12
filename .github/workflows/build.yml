@@ -24,4 +24,4 @@ jobs:
       - name: Build web app
         shell: pwsh
         run: dotnet restore ; dotnet build
-        working-directory: '/src/SmallsOnline.Web.PublicSite/'
+        working-directory: 'src/SmallsOnline.Web.PublicSite/'
