@@ -13,3 +13,37 @@
 .fade-slide-in {
     animation: fade-slidein-keyframes .3s ease
 }
+
+@keyframes spin-out-keyframes {
+    from {
+        transform: rotate(0deg) scale(1);
+    }
+
+    to {
+        transform: rotate(1079deg) scale(0);
+    }
+}
+
+@keyframes spin-in-keyframes {
+    from {
+        transform: rotate(1079deg) scale(0);
+    }
+
+    to {
+        transform: rotate(0deg) scale(1);
+    }
+}
+
+.spin-out {
+    animation-name: spin-out-keyframes;
+    animation-duration: .7s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+.spin-in {
+    animation-name: spin-in-keyframes;
+    animation-duration: .7s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
