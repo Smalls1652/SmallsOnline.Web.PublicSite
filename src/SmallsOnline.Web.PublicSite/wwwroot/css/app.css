@@ -38,6 +38,10 @@ body {
     overflow-y: scroll;
 }
 
+.profile-img {
+    touch-action: manipulation;
+}
+
 .boldText {
     font-weight: bold;
 }
