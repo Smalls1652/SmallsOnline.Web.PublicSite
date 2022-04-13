@@ -46,6 +46,11 @@
     <ProjectReference Include="..\SmallsOnline.Web.Lib\src\SmallsOnline.Web.Lib.Components\SmallsOnline.Web.Lib.Components.csproj" />
   </ItemGroup>
 
+  <PropertyGroup>
+    <BlazorEnableTimeZoneSupport>false</BlazorEnableTimeZoneSupport>
+    <InvariantGlobalization>true</InvariantGlobalization>
+  </PropertyGroup>
+
   <Target Name="InitProject_Combined">
     <Message Importance="high" Text="-------------------------------------------------" />
     <Message Importance="high" Text="Running initialization for Blazor WASM app" />
