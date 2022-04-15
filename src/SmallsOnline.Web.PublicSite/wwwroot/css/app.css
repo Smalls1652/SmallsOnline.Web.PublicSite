@@ -42,6 +42,10 @@ body {
     touch-action: manipulation;
 }
 
+.show-pointer-cursor {
+    cursor: pointer;
+}
+
 .boldText {
     font-weight: bold;
 }
