@@ -7,6 +7,17 @@
   </PropertyGroup>
 
   <PropertyGroup>
+    <PackageId>SmallsOnline.Web.PublicSite</PackageId>
+    <Authors>Timothy Small</Authors>
+    <Company>Smalls.Online</Company>
+    <RepositoryUrl>https://github.com/Smalls1652/SmallsOnline.Web.PublicSite</RepositoryUrl>
+    <VersionPrefix>2022.04.00</VersionPrefix>
+    <Description>
+      The codebase for the public website of https://smalls.online.
+    </Description>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <RunAOTCompilation>false</RunAOTCompilation>
   </PropertyGroup>
 
