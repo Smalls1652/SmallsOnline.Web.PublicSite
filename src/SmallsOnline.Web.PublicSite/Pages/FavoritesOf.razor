@@ -11,12 +11,20 @@
     <PageTitle>
         Smalls.Online - Favorites of wait... This is null?
     </PageTitle>
+    <HeadContent>
+    <meta property="og:url" content="https://smalls.online/top-music/favorites-of" />
+    <meta property="og:description" content="Smalls's favorite music of... Oof. The year is null for some reason." />
+</HeadContent>
 }
 else
 {
     <PageTitle>
         Smalls.Online - Favorites of @ListYear
     </PageTitle>
+    <HeadContent>
+    <meta property="og:url" content="https://smalls.online/top-music/favorites-of/@ListYear" />
+    <meta property="og:description" content="Smalls's favorite music of @ListYear." />
+</HeadContent>
 }
 @if (_isFinishedLoading == false)
 {
