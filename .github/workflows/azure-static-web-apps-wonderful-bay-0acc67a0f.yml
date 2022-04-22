@@ -33,6 +33,10 @@ jobs:
         with:
           node-version: 16
 
+      - name: Install wasm-tools
+        shell: pwsh
+        run: dotnet workload install wasm-tools
+
       - name: Initialize web app project
         shell: pwsh
         run: dotnet msbuild -t:"InitProject_Combined"
