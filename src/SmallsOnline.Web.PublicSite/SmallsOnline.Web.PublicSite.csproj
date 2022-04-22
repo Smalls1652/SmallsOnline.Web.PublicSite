@@ -18,7 +18,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <RunAOTCompilation>false</RunAOTCompilation>
+    <RunAOTCompilation>true</RunAOTCompilation>
   </PropertyGroup>
 
   <PropertyGroup>
