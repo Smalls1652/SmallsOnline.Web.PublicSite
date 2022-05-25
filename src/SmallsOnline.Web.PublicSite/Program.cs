@@ -19,7 +19,7 @@ builder.Services.AddHttpClient(
     }
 );
 
-string apiUri = "https://smallsonlineapi.azurewebsites.net/";
+string apiUri = "https://smallsonline-api.azure-api.net/public/";
 
 builder.Services.AddHttpClient(
     name: "PublicApi",
