@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
@@ -19,7 +20,7 @@ builder.Services.AddHttpClient(
     }
 );
 
-string apiUri = "https://smallsonline-api.azure-api.net/public/";
+string apiUri = builder.Configuration.GetValue<string>("ApiUri");
 
 builder.Services.AddHttpClient(
     name: "PublicApi",
