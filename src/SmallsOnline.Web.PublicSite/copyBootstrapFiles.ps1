@@ -24,8 +24,10 @@ foreach ($fileItem in (Get-ChildItem -Path $bootstrapOutPath)) {
     Remove-Item -Path $fileItem.FullName -Force
 }
 
-Write-Information @writeInfoSplat -MessageData "`t| bootstrap.css-> $($bootstrapOutPath)"
-Copy-Item -Path $bootstrapCssPath -Destination $bootstrapOutPath -ErrorAction "Stop"
+#Write-Information @writeInfoSplat -MessageData "`t| bootstrap.css-> $($bootstrapOutPath)"
+#Copy-Item -Path $bootstrapCssPath -Destination $bootstrapOutPath -ErrorAction "Stop"
+
+Start-Process -FilePath "npm" -ArgumentList @("run", "trimcss-bootstrap") -Wait -NoNewWindow
 
 Write-Information @writeInfoSplat -MessageData "`t| bootstrap.css.map-> $($bootstrapOutPath)"
 Copy-Item -Path $bootstrapCssMapPath -Destination $bootstrapOutPath -ErrorAction "Stop"
@@ -39,8 +41,10 @@ foreach ($fileItem in (Get-ChildItem -Path $bootstrapIconsOutPath)) {
     Remove-Item -Path $fileItem.FullName -Force -Recurse
 }
 
-Write-Information @writeInfoSplat -MessageData "`t| bootstrap-icons.css-> $($bootstrapIconsOutPath)"
-Copy-Item -Path $bootstrapIconsCssPath -Destination $bootstrapIconsOutPath -ErrorAction "Stop"
+#Write-Information @writeInfoSplat -MessageData "`t| bootstrap-icons.css-> $($bootstrapIconsOutPath)"
+#Copy-Item -Path $bootstrapIconsCssPath -Destination $bootstrapIconsOutPath -ErrorAction "Stop"
+
+Start-Process -FilePath "npm" -ArgumentList @("run", "trimcss-bootstrapicons") -Wait -NoNewWindow
 
 Write-Information @writeInfoSplat -MessageData "`t| fonts\-> $($bootstrapIconsOutPath)"
 Copy-Item -Path $bootstrapIconsFontDirPath -Destination $bootstrapIconsOutPath -Recurse -ErrorAction "Stop"
