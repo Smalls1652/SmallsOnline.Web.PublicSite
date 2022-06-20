@@ -5,7 +5,7 @@ module.exports = {
         "wwwroot/index.html"
     ],
     css: [
-        "wwwroot/css/bootstrap-icons/bootstrap-icons.css"
+        "node_modules/bootstrap-icons/font/bootstrap-icons.css"
     ],
     safelist: [
         /terminal-fill$/,

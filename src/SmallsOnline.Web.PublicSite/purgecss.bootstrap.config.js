@@ -5,7 +5,7 @@ module.exports = {
         "wwwroot/index.html"
     ],
     css: [
-        "wwwroot/css/bootstrap/bootstrap.css"
+        "node_modules/bootstrap/dist/css/bootstrap.css"
     ],
     output: "wwwroot/css/bootstrap/bootstrap.trimmed.css"
   }
