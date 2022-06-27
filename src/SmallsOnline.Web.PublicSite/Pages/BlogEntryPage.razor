@@ -1,0 +1,37 @@
+@namespace SmallsOnline.Web.PublicSite
+
+@page "/blog/{Id}"
+
+@if (_isFinishedLoading == false)
+{
+    <div class="fade-slide-in">
+        <div class="row">
+            <div class="col">
+                <div class="card shadow">
+                    <div class="card-header">
+                        <h1 class="mb-0">
+                            Loading blog entry
+                        </h1>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <LoadingBar />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="fade-slide-in">
+        <div class="row">
+            <div class="col">
+                <BlogEntryCard BlogEntry=@_blogEntry />
+            </div>
+        </div>
+    </div>
+}
