@@ -1,6 +1,6 @@
 @namespace SmallsOnline.Web.PublicSite
 
-@page "/blog/{Id}"
+@page "/blog/entry/{Id}"
 
 @if (_isFinishedLoading == false)
 {
@@ -10,7 +10,7 @@
                 <div class="card shadow">
                     <div class="card-header">
                         <h1 class="mb-0">
-                            Loading blog entry
+                            Blog
                         </h1>
                     </div>
                     <div class="card-body">
@@ -27,6 +27,23 @@
 }
 else
 {
+    <div class="fade-slide-in">
+        <div class="row pb-2">
+            <div class="col">
+                <div class="card shadow">
+                    <div class="card-header">
+                        <div class="mb-0">
+                            <h1>
+                                <button type="button" class="btn btn-text-hider btn-glaucous" @onclick="HandleGoBackButtonClick">
+                                    <i class="bi bi-arrow-left" /> <span class="btn-hide">Go back</span>
+                                </button> Blog
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="fade-slide-in">
         <div class="row">
             <div class="col">
