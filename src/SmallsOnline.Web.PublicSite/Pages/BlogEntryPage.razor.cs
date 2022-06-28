@@ -1,5 +1,4 @@
 using System.Net.Http.Json;
-using System.Text;
 using SmallsOnline.Web.Lib.Models.Blog;
 
 namespace SmallsOnline.Web.PublicSite;
@@ -8,6 +7,9 @@ public partial class BlogEntryPage : ComponentBase
 {
     [Inject]
     protected IHttpClientFactory HttpClientFactory { get; set; } = null!;
+
+    [Inject]
+    protected NavigationManager NavigationManager { get; set; } = null!;
 
     [Parameter]
     public string Id { get; set; } = null!;
@@ -21,6 +23,14 @@ public partial class BlogEntryPage : ComponentBase
         _isFinishedLoading = true;
 
         await base.OnParametersSetAsync();
+    }
+
+    private void HandleGoBackButtonClick()
+    {
+        NavigationManager.NavigateTo(
+            uri: "/blog/list/1",
+            forceLoad: false
+        );
     }
 
     private async Task GetBlogEntry()
