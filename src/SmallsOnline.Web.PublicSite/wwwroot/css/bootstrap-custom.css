@@ -1,0 +1,33 @@
+:root {
+    --bs-dark-bg: #495057;
+    --bs-dark-text: #e9ecef;
+    --bs-dark-text-muted: #adb5bd;
+    --bs-dark-link: #b6d2fc;
+    --bs-dark-link-hover: #85b4f9;
+    --bs-list-group-item-border: #f2f2f2;
+}
+
+@media (prefers-color-scheme: dark) {
+    .card {
+        background-color: var(--bs-dark-bg);
+        color: var(--bs-dark-text);
+    }
+
+    .list-group-item {
+        background-color: var(--bs-dark-bg);
+        color: var(--bs-dark-text);
+        border: 1px solid rgba(233, 236, 239, 0.125);
+    }
+
+    .text-muted {
+        color: var(--bs-dark-text-muted)!important;
+    }
+
+    a {
+        color: var(--bs-dark-link);
+    }
+
+    a:hover {
+        color: var(--bs-dark-link-hover);
+    }
+}
