@@ -47,7 +47,7 @@ else
     @if (_blogEntries is not null && _blogEntries.Entries is not null && _blogEntries.Entries.Count != 0)
     {
         <div class="fade-slide-in">
-            @foreach (BlogListEntry blogEntryItem in _blogEntries.Entries)
+            @foreach (BlogEntry blogEntryItem in _blogEntries.Entries)
             {
                 <div class="row pb-2">
                     <div class="col">
@@ -65,9 +65,13 @@ else
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <a class="btn btn-glaucous" role="button" href="/blog/entry/@blogEntryItem.Id">
-                                            Open
-                                        </a>
+                                        @if (blogEntryItem.ContentHtml is not null)
+                                        {
+                                            @((MarkupString)blogEntryItem.ContentHtml)
+                                            <a class="btn btn-glaucous" role="button" href="/blog/entry/@blogEntryItem.Id">
+                                                Read more
+                                            </a>
+                                        }
                                     </div>
                                 </div>
                             </div>
