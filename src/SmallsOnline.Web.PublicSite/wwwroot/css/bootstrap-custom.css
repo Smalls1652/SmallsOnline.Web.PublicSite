@@ -1,5 +1,8 @@
 :root {
     --bs-dark-bg: #495057;
+    --bs-dark-page-link-bg: #515961;
+    --bs-dark-page-link-hover: #5d666f;
+    --bs-list-page-link-border: #cccccc;
     --bs-dark-text: #e9ecef;
     --bs-dark-text-muted: #adb5bd;
     --bs-dark-link: #b6d2fc;
@@ -28,7 +31,7 @@
     }
 
     .text-muted {
-        color: var(--bs-dark-text-muted)!important;
+        color: var(--bs-dark-text-muted) !important;
     }
 
     a {
@@ -37,5 +40,30 @@
 
     a:hover {
         color: var(--bs-dark-link-hover);
+    }
+
+    .page-link {
+        color: var(--bs-dark-link);
+        background-color: var(--bs-dark-page-link-bg);
+        border: 1px solid var(--bs-list-page-link-border);
+    }
+
+    .page-item.active .page-link {
+        color: #fff;
+        background-color: #5C82B2;
+        border-color: var(--bs-list-page-link-border);
+    }
+
+    .page-link:hover {
+        color: var(--bs-dark-link-hover);
+        background-color: var(--bs-dark-page-link-hover);
+        border-color: var(--bs-list-page-link-border);
+    }
+
+    .page-item.disabled .page-link {
+        color: var(--bs-dark-text-muted);
+        pointer-events: none;
+        background-color: var(--bs-dark-page-link-bg);
+        border-color: var(--bs-list-page-link-border);
     }
 }
