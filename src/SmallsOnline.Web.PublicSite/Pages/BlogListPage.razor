@@ -4,6 +4,12 @@
 
 @page "/blog/list/{PageNumber:int}"
 
+<PageTitle>
+    Smalls.Online - Blog
+</PageTitle>
+<HeadContent>
+    <meta property="og:url" content="https://smalls.online/blog/list/@PageNumber" />
+</HeadContent>
 @if (_isFinishedLoading == false)
 {
     <div class="fade-slide-in">
