@@ -2,7 +2,7 @@
 
 @page "/blog/entry/{Id}"
 
-@if (_isFinishedLoading == false)
+@if (_isFinishedLoading == false && _blogEntry is not null)
 {
     <div class="fade-slide-in">
         <div class="row">
@@ -27,6 +27,12 @@
 }
 else
 {
+    <PageTitle>
+        Smalls.Online - Blog - @_blogEntry!.Title
+    </PageTitle>
+    <HeadContent>
+        <meta property="og:url" content="https://smalls.online/blog/entry/@_blogEntry!.Id" />
+    </HeadContent>
     <div class="fade-slide-in">
         <div class="row pb-2">
             <div class="col">
@@ -34,7 +40,8 @@ else
                     <div class="card-header">
                         <div class="mb-0">
                             <h1>
-                                <button type="button" class="btn btn-text-hider btn-glaucous" @onclick="HandleGoBackButtonClick">
+                                <button type="button" class="btn btn-text-hider btn-glaucous"
+                                @onclick="HandleGoBackButtonClick">
                                     <i class="bi bi-arrow-left" /> <span class="btn-hide">Go back</span>
                                 </button> <i class="bi bi-journal-text" /> Blog
                             </h1>
