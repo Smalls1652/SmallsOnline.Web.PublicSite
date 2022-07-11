@@ -24,6 +24,15 @@ public partial class BlogListPage : ComponentBase
 
     protected override async Task OnParametersSetAsync()
     {
+        Uri pageUri = new(NavigationManager.Uri);
+        if (pageUri.AbsolutePath == "/blog" || pageUri.AbsolutePath == "/blog/" || pageUri.AbsolutePath == "/blog/list" || pageUri.AbsolutePath == "/blog/list/")
+        {
+            NavigationManager.NavigateTo(
+                uri: "/blog/list/1",
+                forceLoad: false
+            );
+        }
+
         await GetBlogEntries();
 
         if (PageNumber == 1)
