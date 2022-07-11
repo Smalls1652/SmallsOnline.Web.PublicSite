@@ -24,6 +24,22 @@
         border-color: var(--bs-glaucous);
     }
 
+.btn > .btn-hide {
+    max-width: 0px;
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-flex;
+    vertical-align: top;
+    transition: max-width .25s ease-in;
+}
+
+.btn:focus > .btn-hide {
+    max-width: 3.75rem;
+}
+
+.btn:hover > .btn-hide {
+    max-width: 3.75rem;
+}
 
 html {
     height: 100%;

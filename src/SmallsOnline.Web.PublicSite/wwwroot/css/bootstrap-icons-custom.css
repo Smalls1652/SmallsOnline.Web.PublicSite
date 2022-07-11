@@ -2,16 +2,28 @@
     font-size: 2em;
 }
 
-.bi-linkedin-color {
-    color: #006192;
+@media (prefers-color-scheme: light) {
+    .bi-linkedin-color {
+        color: #006192;
+    }
+
+    .bi-github-color {
+        color: #333333;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .bi-linkedin-color {
+        color: #0099e6;
+    }
+
+    .bi-github-color {
+        color: #bebfc1;
+    }
 }
 
 .bi-twitter-color {
     color: #55ACEE;
-}
-
-.bi-github-color {
-    color: #333333;
 }
 
 .bi-icon-color-gold {
