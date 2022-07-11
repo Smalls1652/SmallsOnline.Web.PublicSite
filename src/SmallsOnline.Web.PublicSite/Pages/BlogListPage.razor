@@ -46,9 +46,9 @@ else
     </div>
     @if (_blogEntries is not null && _blogEntries.Entries is not null && _blogEntries.Entries.Count != 0)
     {
-        @foreach (BlogListEntry blogEntryItem in _blogEntries.Entries)
-        {
-            <div class="fade-slide-in">
+        <div class="fade-slide-in">
+            @foreach (BlogListEntry blogEntryItem in _blogEntries.Entries)
+            {
                 <div class="row pb-2">
                     <div class="col">
                         <div class="card shadow">
@@ -74,61 +74,60 @@ else
                         </div>
                     </div>
                 </div>
-            </div>
-        }
-        <div class="fade-slide-in">
-                <div class="row pb-2">
-                    <div class="col">
-                        <div class="card shadow">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <nav>
-                                            <ul class="pagination justify-content-center mb-0">
-                                                <li class="page-item @(_previousPageBtnDisabled ? "disabled" : "")">
-                                                    @if (_previousPageBtnDisabled)
-                                                    {
-                                                        <a class="page-link">
-                                                            Previous
-                                                        </a>
-                                                    }
-                                                    else
-                                                    {
-                                                        <a class="page-link" href="/blog/list/@_previousPageNumber">
-                                                            Previous
-                                                        </a>
-                                                    }
-                                                </li>
-                                                @for (int i = 1; i <= _blogEntries.TotalPages; i++)
+            }
+            
+            <div class="row pt-2">
+                <div class="col">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <nav>
+                                        <ul class="pagination justify-content-center mb-0">
+                                            <li class="page-item @(_previousPageBtnDisabled ? "disabled" : "")">
+                                                @if (_previousPageBtnDisabled)
                                                 {
-                                                    <li class="page-item @(PageNumber == i ? "active" : "")">
-                                                        <a class="page-link" href="/blog/list/@i">
-                                                            @i
-                                                        </a>
-                                                    </li>
+                                                    <a class="page-link">
+                                                        Previous
+                                                    </a>
                                                 }
-                                                <li class="page-item @(_nextPageBtnDisabled == true ? "disabled" : "")">
-                                                    @if (_nextPageBtnDisabled)
-                                                    {
-                                                        <a class="page-link">
-                                                            Next
-                                                        </a>
-                                                    }
-                                                    else
-                                                    {
-                                                        <a class="page-link" href="/blog/list/@_nextPageNumber">
-                                                            Next
-                                                        </a>
-                                                    }
+                                                else
+                                                {
+                                                    <a class="page-link" href="/blog/list/@_previousPageNumber">
+                                                        Previous
+                                                    </a>
+                                                }
+                                            </li>
+                                            @for (int i = 1; i <= _blogEntries.TotalPages; i++)
+                                            {
+                                                <li class="page-item @(PageNumber == i ? "active" : "")">
+                                                    <a class="page-link" href="/blog/list/@i">
+                                                        @i
+                                                    </a>
                                                 </li>
-                                            </ul>
-                                        </nav>
-                                    </div>
+                                            }
+                                            <li class="page-item @(_nextPageBtnDisabled == true ? "disabled" : "")">
+                                                @if (_nextPageBtnDisabled)
+                                                {
+                                                    <a class="page-link">
+                                                        Next
+                                                    </a>
+                                                }
+                                                else
+                                                {
+                                                    <a class="page-link" href="/blog/list/@_nextPageNumber">
+                                                        Next
+                                                    </a>
+                                                }
+                                            </li>
+                                        </ul>
+                                    </nav>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
     }
     else
