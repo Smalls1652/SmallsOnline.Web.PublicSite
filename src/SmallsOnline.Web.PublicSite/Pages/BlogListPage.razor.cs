@@ -17,10 +17,37 @@ public partial class BlogListPage : ComponentBase
     private bool _isFinishedLoading = false;
     private BlogEntries? _blogEntries;
 
+    private int _previousPageNumber = 1;
+    private bool _previousPageBtnDisabled = false;
+    private int _nextPageNumber = 1;
+    private bool _nextPageBtnDisabled = false;
+
     protected override async Task OnParametersSetAsync()
     {
         await GetBlogEntries();
-        _isFinishedLoading = true;
+
+        if (PageNumber == 1)
+        {
+            _previousPageNumber = 1;
+            _previousPageBtnDisabled = true;
+        }
+        else
+        {
+            _previousPageNumber = PageNumber - 1;
+            _previousPageBtnDisabled = false;
+        }
+
+        _nextPageNumber = PageNumber + 1;
+        if (PageNumber >= _blogEntries?.TotalPages)
+        {
+            _nextPageBtnDisabled = true;
+        }
+        else
+        {
+            _nextPageBtnDisabled = false;
+        }
+
+    _isFinishedLoading = true;
 
         await base.OnParametersSetAsync();
     }
