@@ -24,7 +24,7 @@ jobs:
           dotnet-version: "6.0.x"
 
       - name: Setup GitHub Packages source
-        run: dotnet nuget add source https://nuget.pkg.github.com/Smalls1652/index.json --name github --username Smalls1652 --password ${{ secrets.PACKAGES_TOKEN }} --store-password-in-clear-text
+        run: dotnet nuget add source https://nuget.pkg.github.com/Smalls1652/index.json --store-password-in-clear-text --name github --username Smalls1652 --password ${{ secrets.PACKAGES_TOKEN }}
         working-directory: "src/SmallsOnline.Web.PublicSite/"
 
       - name: Install wasm-tools
