@@ -3,13 +3,13 @@ name: Azure Static Web Apps CI/CD
 on:
   push:
     branches:
-      - main
+      - stable
     paths-ignore:
       - "**.md"
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
-      - main
+      - stable
     paths-ignore:
       - "**.md"
 
