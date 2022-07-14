@@ -7,3 +7,5 @@ updates:
       interval: "daily"
     labels:
       - "dependency update"
+    assignees:
+      - "Smalls1652"
