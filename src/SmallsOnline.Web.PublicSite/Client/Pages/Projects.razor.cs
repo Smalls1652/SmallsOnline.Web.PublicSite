@@ -12,6 +12,9 @@ public partial class Projects : ComponentBase
     [Inject]
     protected IHttpClientFactory HttpClientFactory { get; set; } = null!;
 
+    [CascadingParameter]
+    protected ShouldFadeIn? ShouldFadeSlideIn { get; set; }
+
     private List<ProjectItem>? _projectItems;
     private List<ProjectType>? _projectTypes;
     private bool _isFinishedLoading = false;

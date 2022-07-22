@@ -14,6 +14,9 @@ public partial class BlogEntryPage : ComponentBase
     [Parameter]
     public string Id { get; set; } = null!;
 
+    [CascadingParameter]
+    protected ShouldFadeIn? ShouldFadeSlideIn { get; set; }
+
     private bool _isFinishedLoading = false;
     private BlogEntry? _blogEntry;
 

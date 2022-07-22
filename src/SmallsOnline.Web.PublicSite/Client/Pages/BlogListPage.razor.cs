@@ -14,6 +14,9 @@ public partial class BlogListPage : ComponentBase
     [Parameter]
     public int PageNumber { get; set; } = 1;
 
+    [CascadingParameter]
+    protected ShouldFadeIn? ShouldFadeSlideIn { get; set; }
+
     private bool _isFinishedLoading = false;
     private BlogEntries? _blogEntries;
 

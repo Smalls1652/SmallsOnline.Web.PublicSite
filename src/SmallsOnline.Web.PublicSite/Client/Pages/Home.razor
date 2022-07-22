@@ -5,7 +5,7 @@
 <PageTitle>
     Smalls.Online - Home
 </PageTitle>
-<div class="fade-slide-in">
+<div class="@(ShouldFadeSlideIn is not null && ShouldFadeSlideIn!.Enabled == true ? "fade-slide-in" : "")">
     <div class="card shadow">
         <div class="card-header">
             <h1 class="mb-0">

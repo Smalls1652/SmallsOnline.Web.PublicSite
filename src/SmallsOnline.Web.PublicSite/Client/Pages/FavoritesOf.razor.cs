@@ -16,6 +16,9 @@ public partial class FavoritesOf : ComponentBase
     [Parameter]
     public string? ListYear { get; set; }
 
+    [CascadingParameter]
+    protected ShouldFadeIn? ShouldFadeSlideIn { get; set; }
+
     private List<AlbumData>? _albumItems;
     private List<TrackData>? _trackItems;
     private bool _isFinishedLoading = false;
