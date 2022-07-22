@@ -1,0 +1,23 @@
+@namespace SmallsOnline.Web.PublicSite.Client.Shared.Navigation
+
+<div class="container pt-4">
+    <div class="navbar navbar-dark bg-gunmetal navbar-expand-lg rounded">
+        <div class="container">
+            <div class="d-flex px-2 flex-fill">
+                <div class="flex-fill align-self-center">
+                    <NavbarLogo />
+                </div>
+                <div class="align-self-center">
+                    <button class="navbar-toggler" type="button" @onclick="ToggleCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </div>
+            <div class="w-100">
+                <CascadingValue Name="Collapsed" Value="@Collapsed">
+                    <NavbarCollapseSection ToggleChildCollapse="@ChildComponentRequestedCollapse" />
+                </CascadingValue>
+            </div>
+        </div>
+    </div>
+</div>

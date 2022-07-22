@@ -2,7 +2,7 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"label": "blazor: dotnet watch",
+			"label": "blazor server: dotnet watch",
 			"type": "process",
 			"command": "dotnet",
 			"args": [
@@ -12,7 +12,7 @@
 				"/consoleloggerparameters:NoSummary"
 			],
 			"options": {
-				"cwd": "${workspaceFolder}/src/SmallsOnline.Web.PublicSite/",
+				"cwd": "${workspaceFolder}/src/SmallsOnline.Web.PublicSite/Server",
 				"env": {
 					"ASPNETCORE_ENVIRONMENT": "Development"
 				}
@@ -30,66 +30,12 @@
 			]
 		},
 		{
-			"label": "blazor: dotnet run",
-			"type": "process",
-			"command": "dotnet",
-			"args": [
-				"run",
-				"/consoleloggerparameters:NoSummary"
-			],
-			"options": {
-				"cwd": "${workspaceFolder}/src/SmallsOnline.Web.PublicSite/",
-				"env": {
-					"ASPNETCORE_ENVIRONMENT": "Development"
-				}
-			},
-			"isBackground": true,
-			"problemMatcher": [
-				{
-					"base": "$msCompile",
-					"background": {
-						"activeOnStart": true,
-						"beginsPattern": "^Building\\.\\.\\.$",
-						"endsPattern": "^\\s*Application started\\..+?$"
-					}
-				}
-			]
-		},
-		{
-			"label": "swa: start (No SSL)",
-			"detail": "Run the web app and API for local development without SSL.",
-			"type": "shell",
-			"command": "swa",
-			"args": [
-				"start",
-				"app"
-			],
-			"options": {
-				"cwd": "${workspaceFolder}"
-			},
-			"dependsOn": [
-				"blazor: dotnet watch"
-			],
-			"dependsOrder": "sequence",
-			"isBackground": true,
-			"problemMatcher": [
-				{
-					"base": "$swa-watch",
-					"background": {
-						"activeOnStart": true,
-						"beginsPattern": "^\\[swa\\] Using configuration \"app\" from file:$",
-						"endsPattern": "^\\[swa\\] Azure Static Web Apps emulator started at http:\\/\\/localhost:3000\\. Press CTRL\\+C to exit\\.$"
-					}
-				}
-			]
-		},
-		{
 			"label": "blazor: publish web app",
 			"type": "process",
 			"command": "dotnet",
 			"args": [
 				"publish",
-				"${workspaceFolder}/src/SmallsOnline.Web.PublicSite/",
+				"${workspaceFolder}/src/SmallsOnline.Web.PublicSite/Server/",
 				"--configuration",
 				"Release",
 				"--output",

@@ -1,0 +1,57 @@
+@namespace SmallsOnline.Web.PublicSite.Client
+@using SmallsOnline.Web.Lib.Models.Projects
+
+@page "/projects"
+
+<PageTitle>
+    Smalls.Online - Projects
+</PageTitle>
+<HeadContent>
+    <meta property="og:url" content="https://smalls.online/projects" />
+</HeadContent>
+<div class="fade-slide-in">
+    <div class="card shadow">
+        <div class="card-header">
+            <h1 class="mb-0">
+                <i class="bi bi-collection-fill" /> Projects
+            </h1>
+        </div>
+        <div class="card-body">
+            <div class="row pb-3">
+                <div class="col">
+                    <InfoCard Title="⚠️ Notice">
+                        <p>
+                            This page is fairly outdated. I'm working on updating this list and will, hopefully, have it updated very soon!
+                        </p>
+                        <p>
+                            If you want to see a list of projects I'm currently working on or have
+                            worked on, visit my <a href="https://github.com/smalls1652" target="_blank"
+                                rel="noopener noreferrer" class="link-light">GitHub profile <i class="bi bi-github bi-2x" /></a>.
+                        </p>
+                    </InfoCard>
+                </div>
+            </div>
+
+            @if (_isFinishedLoading == false)
+            {
+                <div class="row">
+                    <div class="col">
+                        <LoadingBar />
+                    </div>
+                </div>
+            }
+            else
+            {
+                @foreach (ProjectItem projectItem in _projectItems!)
+                {
+                    <div class="row">
+                        <div class="col pb-4">
+                            <ProjectCard Name=@projectItem.Name Type=@projectItem.Type Description=@projectItem.Description
+                        Url=@projectItem.Url UrlIsRepo=@projectItem.UrlIsRepo ProjectTypes=@_projectTypes />
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>

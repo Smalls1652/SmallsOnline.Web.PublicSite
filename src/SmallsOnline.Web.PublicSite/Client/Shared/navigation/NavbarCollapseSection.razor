@@ -1,0 +1,7 @@
+@namespace SmallsOnline.Web.PublicSite.Client.Shared.Navigation
+
+<div class="navbar-collapse @(Collapsed ? "collapse" : "")">
+    <CascadingValue Name="ToggleChildCollapse" Value="@ToggleChildCollapse">
+        <NavbarItems />
+    </CascadingValue>
+</div>

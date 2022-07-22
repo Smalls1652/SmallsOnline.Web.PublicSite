@@ -1,0 +1,73 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow
+name: Build and deploy to Azure Web App
+
+on:
+  push:
+    branches:
+      - dev
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0.x'
+          include-prerelease: true
+
+      - name: Setup NodeJS
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+
+      - name: Setup GitHub Packages source
+        run: dotnet nuget add source https://nuget.pkg.github.com/Smalls1652/index.json --name github --username Smalls1652 --password ${{ secrets.PACKAGES_TOKEN }} --store-password-in-clear-text
+        working-directory: "src/SmallsOnline.Web.PublicSite/Client/"
+
+      - name: Initialize web app project
+        run: dotnet msbuild -t:"InitProject_Combined"
+        working-directory: "src/SmallsOnline.Web.PublicSite/Client/"
+
+      - name: Install wasm-tools
+        run: dotnet workload install wasm-tools
+
+      - name: Build with dotnet
+        run: dotnet build --configuration Release
+        working-directory: "src/SmallsOnline.Web.PublicSite/Server/"
+
+      - name: dotnet publish
+        run: dotnet publish --configuration Release -o ${{env.DOTNET_ROOT}}/build
+        working-directory: "src/SmallsOnline.Web.PublicSite/Server/"
+
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v2
+        with:
+          name: .net-app
+          path: ${{env.DOTNET_ROOT}}/build
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: 'production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v2
+        with:
+          name: .net-app
+
+      - name: Deploy to Azure Web App
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'smallsonline-webapp'
+          slot-name: 'production'
+          publish-profile: ${{ secrets.AzureAppService_PublishProfile_2f029dc2f1c7478589ccc3dac600c6fe }}
+          package: .
