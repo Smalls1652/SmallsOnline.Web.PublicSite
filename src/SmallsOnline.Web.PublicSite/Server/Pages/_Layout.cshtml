@@ -8,6 +8,7 @@
 <html lang="en">
 <head>
     <title>@ViewData["Title"]</title>
+    <component type="typeof(HeadOutlet)" render-mode="WebAssemblyPrerendered" />
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
@@ -35,7 +36,6 @@
     <link href="css/app.css" rel="stylesheet" />
     <link href="css/animation/animation.css" rel="stylesheet" />
     <link href="SmallsOnline.Web.PublicSite.Client.styles.css" rel="stylesheet" />
-    <component type="typeof(HeadOutlet)" render-mode="WebAssemblyPrerendered" />
 </head>
 <body>
     @RenderBody()
@@ -51,6 +51,7 @@
         <a class="dismiss">🗙</a>
     </div>
 
+    <persist-component-state />
     <script src="_framework/blazor.webassembly.js"></script>
 </body>
 </html>
