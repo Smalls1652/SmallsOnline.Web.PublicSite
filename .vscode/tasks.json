@@ -12,7 +12,7 @@
 				"/consoleloggerparameters:NoSummary"
 			],
 			"options": {
-				"cwd": "${workspaceFolder}/src/SmallsOnline.Web.PublicSite.Hosted/Server",
+				"cwd": "${workspaceFolder}/src/SmallsOnline.Web.PublicSite/Server",
 				"env": {
 					"ASPNETCORE_ENVIRONMENT": "Development"
 				}
