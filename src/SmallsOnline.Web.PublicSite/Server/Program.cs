@@ -7,6 +7,18 @@ var builder = WebApplication.CreateBuilder(args);
 //builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
+builder.Services.AddScoped(
+    sp => new HttpClient { BaseAddress = new Uri("https://smalls.online/") }
+);
+
+builder.Services.AddHttpClient(
+    name: "BaseAppClient",
+    configureClient: (client) =>
+    {
+        client.BaseAddress = new("https://smalls.online/");
+    }
+);
+
 string apiUri = builder.Configuration.GetValue<string>("ApiUri");
 
 builder.Services.AddHttpClient(
