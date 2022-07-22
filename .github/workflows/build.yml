@@ -25,7 +25,7 @@ jobs:
 
       - name: Setup GitHub Packages source
         run: dotnet nuget add source https://nuget.pkg.github.com/Smalls1652/index.json --name github --username Smalls1652 --password ${{ secrets.PACKAGES_TOKEN }} --store-password-in-clear-text
-        working-directory: "src/SmallsOnline.Web.PublicSite/"
+        working-directory: "src/SmallsOnline.Web.PublicSite/Client/"
 
       - name: Install wasm-tools
         run: dotnet workload install wasm-tools
@@ -33,4 +33,4 @@ jobs:
       - name: Build web app
         shell: pwsh
         run: dotnet restore ; dotnet build
-        working-directory: "src/SmallsOnline.Web.PublicSite/"
+        working-directory: "src/SmallsOnline.Web.PublicSite/Server/"
