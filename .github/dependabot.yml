@@ -1,7 +1,25 @@
 version: 2
 updates:
   - package-ecosystem: "nuget"
-    directory: "/src/SmallsOnline.Web.PublicSite/"
+    directory: "/src/SmallsOnline.Web.PublicSite/Client"
+    target-branch: "dev"
+    schedule:
+      interval: "daily"
+    labels:
+      - "dependency update"
+    assignees:
+      - "Smalls1652"
+  - package-ecosystem: "nuget"
+    directory: "/src/SmallsOnline.Web.PublicSite/Server"
+    target-branch: "dev"
+    schedule:
+      interval: "daily"
+    labels:
+      - "dependency update"
+    assignees:
+      - "Smalls1652"
+  - package-ecosystem: "nuget"
+    directory: "/src/SmallsOnline.Web.PublicSite/Shared"
     target-branch: "dev"
     schedule:
       interval: "daily"
