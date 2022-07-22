@@ -12,9 +12,11 @@
         Smalls.Online - Favorites of wait... This is null?
     </PageTitle>
     <HeadContent>
-    <meta property="og:url" content="https://smalls.online/top-music/favorites-of" />
-    <meta property="og:description" content="Smalls's favorite music of... Oof. The year is null for some reason." />
-</HeadContent>
+        <meta name="title" property="og:title" content="Smalls.Online - Favorite Music of a null... Year?" />
+        <meta name="author" content="Tim Small">
+        <meta property="og:url" content="https://smalls.online/top-music/favorites-of" />
+        <meta property="og:description" content="Smalls's favorite music of... Oof. The year is null for some reason." />
+    </HeadContent>
 }
 else
 {
@@ -22,93 +24,95 @@ else
         Smalls.Online - Favorites of @ListYear
     </PageTitle>
     <HeadContent>
-    <meta property="og:url" content="https://smalls.online/top-music/favorites-of/@ListYear" />
-    <meta property="og:description" content="Smalls's favorite music of @ListYear." />
-</HeadContent>
+        <meta name="title" property="og:title" content="Smalls.Online - Favorite Music of @ListYear" />
+        <meta name="author" content="Tim Small">
+        <meta property="og:url" content="https://smalls.online/top-music/favorites-of/@ListYear" />
+        <meta property="og:description" content="Smalls's favorite music of @ListYear." />
+    </HeadContent>
 }
 @if (_isFinishedLoading == false)
 {
     <div class="@(ShouldFadeSlideIn is not null && ShouldFadeSlideIn!.Enabled == true ? "fade-slide-in" : "")">
-    <div class="row">
-        <div class="col">
-            <div class="card shadow">
-                <div class="card-header">
-                    <h1 class="mb-0">
-                        <i class="bi bi-headphones" /> Favorite Music of @ListYear
-                    </h1>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col">
-                            <LoadingBar />
+        <div class="row">
+            <div class="col">
+                <div class="card shadow">
+                    <div class="card-header">
+                        <h1 class="mb-0">
+                            <i class="bi bi-headphones" /> Favorite Music of @ListYear
+                        </h1>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <LoadingBar />
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 }
 else
 {
     <div class="@(ShouldFadeSlideIn is not null && ShouldFadeSlideIn!.Enabled == true ? "fade-slide-in" : "")">
-    <div class="row">
-        <div class="col">
-            <div class="card shadow">
-                <div class="card-header">
-                    <h1 class="mb-0">
-                        <i class="bi bi-headphones" /> Favorite Music of @ListYear
-                    </h1>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col">
-                            <h2 id="table-of-contents">
-                                Table of Contents
-                            </h2>
-                            <ul>
-                                <li>
-                                    <a onclick="document.getElementById('favorite-albums').scrollIntoView({behavior:'smooth'})"
+        <div class="row">
+            <div class="col">
+                <div class="card shadow">
+                    <div class="card-header">
+                        <h1 class="mb-0">
+                            <i class="bi bi-headphones" /> Favorite Music of @ListYear
+                        </h1>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <h2 id="table-of-contents">
+                                    Table of Contents
+                                </h2>
+                                <ul>
+                                    <li>
+                                        <a onclick="document.getElementById('favorite-albums').scrollIntoView({behavior:'smooth'})"
                                         class="fs-5 fw-bold text-decoration-none show-pointer-cursor">
-                                        Favorite Albums
-                                    </a>
-                                </li>
-                                <li>
-                                    <a onclick="document.getElementById('favorite-tracks').scrollIntoView({behavior:'smooth'})"
+                                            Favorite Albums
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a onclick="document.getElementById('favorite-tracks').scrollIntoView({behavior:'smooth'})"
                                         class="fs-5 fw-bold text-decoration-none show-pointer-cursor">
-                                        Favorite Songs
-                                    </a>
-                                </li>
-                            </ul>
+                                            Favorite Songs
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="row pt-3">
-        <div class="col">
-            <div class="card shadow" id="favorite-albums" @ref="_favoriteAlbumsRef">
-                <div class="card-header">
-                    <h1 class="mb-0">
-                        Favorite Albums
-                    </h1>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col">
-                            <p class="text-muted font-weight-bold">
-                                This list is in no particular order, with the exception of the first entry.
-                            </p>
-                            <p class="text-muted font-weight-bold">
-                                <i class="bi bi-star-fill bi-icon-color-gold" /> - This icon means that this is what I
-                                consider to
-                                be my personal <span class="font-italic">album of the year</span>.
-                            </p>
-                        </div>
+        <div class="row pt-3">
+            <div class="col">
+                <div class="card shadow" id="favorite-albums" @ref="_favoriteAlbumsRef">
+                    <div class="card-header">
+                        <h1 class="mb-0">
+                            Favorite Albums
+                        </h1>
                     </div>
-                    @foreach (AlbumData albumItem in _albumItems!)
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <p class="text-muted font-weight-bold">
+                                    This list is in no particular order, with the exception of the first entry.
+                                </p>
+                                <p class="text-muted font-weight-bold">
+                                    <i class="bi bi-star-fill bi-icon-color-gold" /> - This icon means that this is what I
+                                    consider to
+                                    be my personal <span class="font-italic">album of the year</span>.
+                                </p>
+                            </div>
+                        </div>
+                        @foreach (AlbumData albumItem in _albumItems!)
                         {
                             <div class="row pb-3">
                                 <div class="col">
