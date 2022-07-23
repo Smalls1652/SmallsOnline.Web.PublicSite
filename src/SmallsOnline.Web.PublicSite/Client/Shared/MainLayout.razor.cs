@@ -31,9 +31,18 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
 
     public void Dispose()
     {
-        if (_isEnableFadeSlideALocationChangeEventMethod)
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (disposing)
         {
-            NavigationManager.LocationChanged -= EnableFadeSlideInOnPageChange;
+            if (_isEnableFadeSlideALocationChangeEventMethod)
+            {
+                NavigationManager.LocationChanged -= EnableFadeSlideInOnPageChange;
+            }
         }
     }
 }
