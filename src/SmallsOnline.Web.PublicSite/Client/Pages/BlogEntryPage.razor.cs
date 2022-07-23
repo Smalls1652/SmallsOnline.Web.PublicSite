@@ -1,4 +1,5 @@
 using System.Net.Http.Json;
+using Microsoft.JSInterop;
 using SmallsOnline.Web.Lib.Models.Blog;
 
 namespace SmallsOnline.Web.PublicSite.Client;
@@ -10,6 +11,9 @@ public partial class BlogEntryPage : ComponentBase, IDisposable
 
     [Inject]
     protected NavigationManager NavigationManager { get; set; } = null!;
+
+    [Inject]
+    protected IJSRuntime JSRuntime { get; set; } = null!;
 
     [Inject]
     protected PersistentComponentState AppState { get; set; } = null!;
@@ -41,6 +45,16 @@ public partial class BlogEntryPage : ComponentBase, IDisposable
         _isFinishedLoading = true;
 
         await base.OnParametersSetAsync();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("hljs.highlightAll");
+        }
+
+        await base.OnAfterRenderAsync(firstRender);
     }
 
     private void HandleGoBackButtonClick()
