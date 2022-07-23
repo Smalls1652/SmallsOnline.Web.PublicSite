@@ -10,12 +10,15 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
     private ShouldFadeIn _shouldFadeSlideIn = new();
     private bool _isEnableFadeSlideALocationChangeEventMethod;
 
-    protected override void OnInitialized()
+    protected override void OnAfterRender(bool firstRender)
     {
-        NavigationManager.LocationChanged += EnableFadeSlideInOnPageChange;
-        _isEnableFadeSlideALocationChangeEventMethod = true;
+        if (firstRender)
+        {
+            NavigationManager.LocationChanged += EnableFadeSlideInOnPageChange;
+            _isEnableFadeSlideALocationChangeEventMethod = true;
+        }
 
-        base.OnInitialized();
+        base.OnAfterRender(firstRender);
     }
 
     private void EnableFadeSlideInOnPageChange(object? sender, LocationChangedEventArgs eventArgs)
