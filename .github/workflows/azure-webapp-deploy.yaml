@@ -4,7 +4,7 @@ name: Build and deploy to Azure Web App
 on:
   push:
     branches:
-      - dev
+      - stable
   workflow_dispatch:
 
 jobs:
