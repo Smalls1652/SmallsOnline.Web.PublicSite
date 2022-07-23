@@ -6,6 +6,17 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <PackageId>SmallsOnline.Web.PublicSite.Server</PackageId>
+    <Authors>Timothy Small</Authors>
+    <Company>Smalls.Online</Company>
+    <RepositoryUrl>https://github.com/Smalls1652/SmallsOnline.Web.PublicSite</RepositoryUrl>
+    <VersionPrefix>2022.07.00</VersionPrefix>
+    <Description>
+      The codebase for the public website of https://smalls.online.
+    </Description>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.7" />
   </ItemGroup>
