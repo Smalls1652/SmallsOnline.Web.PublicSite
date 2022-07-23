@@ -1,5 +1,6 @@
 version: 2
 updates:
+  # NuGet config for SmallsOnline.Web.PublicSite.Client
   - package-ecosystem: "nuget"
     directory: "/src/SmallsOnline.Web.PublicSite/Client"
     target-branch: "dev"
@@ -10,6 +11,7 @@ updates:
     assignees:
       - "Smalls1652"
 
+  # NPM config for SmallsOnline.Web.PublicSite.Client
   - package-ecosystem: "npm"
     directory: "/src/SmallsOnline.Web.PublicSite/Client"
     target-branch: "dev"
@@ -20,6 +22,7 @@ updates:
     assignees:
       - "Smalls1652"
 
+  # NuGet config for SmallsOnline.Web.PublicSite.Server
   - package-ecosystem: "nuget"
     directory: "/src/SmallsOnline.Web.PublicSite/Server"
     target-branch: "dev"
@@ -30,6 +33,7 @@ updates:
     assignees:
       - "Smalls1652"
 
+  # NuGet config for SmallsOnline.Web.PublicSite.Shared
   - package-ecosystem: "nuget"
     directory: "/src/SmallsOnline.Web.PublicSite/Shared"
     target-branch: "dev"
