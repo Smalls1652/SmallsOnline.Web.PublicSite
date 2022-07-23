@@ -3,13 +3,19 @@ using SmallsOnline.Web.Lib.Models.Blog;
 
 namespace SmallsOnline.Web.PublicSite.Client;
 
-public partial class BlogListPage : ComponentBase
+public partial class BlogListPage : ComponentBase, IDisposable
 {
     [Inject]
     protected IHttpClientFactory HttpClientFactory { get; set; } = null!;
 
     [Inject]
     protected NavigationManager NavigationManager { get; set; } = null!;
+
+    [Inject]
+    protected PersistentComponentState AppState { get; set; } = null!;
+
+    [Inject]
+    protected ILogger<BlogEntryPage> PageLogger { get; set; } = null!;
 
     [Parameter]
     public int PageNumber { get; set; } = 1;
@@ -18,6 +24,7 @@ public partial class BlogListPage : ComponentBase
     protected ShouldFadeIn? ShouldFadeSlideIn { get; set; }
 
     private bool _isFinishedLoading = false;
+    private PersistingComponentStateSubscription? _persistenceSubscription;
     private BlogEntries? _blogEntries;
 
     private int _previousPageNumber = 1;
@@ -25,8 +32,16 @@ public partial class BlogListPage : ComponentBase
     private int _nextPageNumber = 1;
     private bool _nextPageBtnDisabled = false;
 
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
     protected override async Task OnParametersSetAsync()
     {
+        _persistenceSubscription = AppState.RegisterOnPersisting(PersistBlogListData);
+
         Uri pageUri = new(NavigationManager.Uri);
         if (pageUri.AbsolutePath == "/blog" || pageUri.AbsolutePath == "/blog/" || pageUri.AbsolutePath == "/blog/list" || pageUri.AbsolutePath == "/blog/list/")
         {
@@ -66,8 +81,44 @@ public partial class BlogListPage : ComponentBase
 
     private async Task GetBlogEntries()
     {
-        using HttpClient httpClient = HttpClientFactory.CreateClient("PublicApi");
+        bool isDataAvailable = AppState.TryTakeFromJson(
+            key: "blogListData",
+            instance: out BlogEntries? restoredData
+        );
 
-        _blogEntries = await httpClient.GetFromJsonAsync<BlogEntries>($"api/blog/entries/{PageNumber}");
+        if (!isDataAvailable)
+        {
+            using HttpClient httpClient = HttpClientFactory.CreateClient("PublicApi");
+
+            _blogEntries = await httpClient.GetFromJsonAsync<BlogEntries>($"api/blog/entries/{PageNumber}");
+        }
+        else
+        {
+            PageLogger.LogInformation("Blog list data was persisted from a prerendered state. Restoring that data instead.");
+            _blogEntries = restoredData;
+        }
+    }
+
+    private Task PersistBlogListData()
+    {
+        AppState.PersistAsJson(
+            key: "blogListData",
+            instance: _blogEntries
+        );
+
+        return Task.CompletedTask;
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (disposing)
+        {
+            if (_persistenceSubscription.HasValue)
+            {
+                _persistenceSubscription.Value.Dispose();
+            }
+
+            _blogEntries = null;
+        }
     }
 }

@@ -8,10 +8,16 @@ namespace SmallsOnline.Web.PublicSite.Client;
 /// <summary>
 /// The page for displaying the favorite music of a given year.
 /// </summary>
-public partial class FavoritesOf : ComponentBase
+public partial class FavoritesOf : ComponentBase, IDisposable
 {
     [Inject]
     protected IHttpClientFactory HttpClientFactory { get; set; } = null!;
+
+    [Inject]
+    protected PersistentComponentState AppState { get; set; } = null!;
+
+    [Inject]
+    protected ILogger<BlogEntryPage> PageLogger { get; set; } = null!;
 
     [Parameter]
     public string? ListYear { get; set; }
@@ -19,15 +25,25 @@ public partial class FavoritesOf : ComponentBase
     [CascadingParameter]
     protected ShouldFadeIn? ShouldFadeSlideIn { get; set; }
 
+    private bool _isFinishedLoading = false;
+    private PersistingComponentStateSubscription? _persistenceSubscription;
     private List<AlbumData>? _albumItems;
     private List<TrackData>? _trackItems;
-    private bool _isFinishedLoading = false;
+
     private ElementReference _favoriteAlbumsRef;
     private ElementReference _favoriteTracksRef;
+
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
 
     protected override async Task OnParametersSetAsync()
     {
         _isFinishedLoading = false;
+
+        _persistenceSubscription = AppState.RegisterOnPersisting(PersistFavoritesOfData);
 
         await GetFavorites();
 
@@ -39,13 +55,56 @@ public partial class FavoritesOf : ComponentBase
     /// </summary>
     private async Task GetFavorites()
     {
-        using HttpClient httpClient = HttpClientFactory.CreateClient("PublicApi");
+        bool isAlbumItemsDataAvailable = AppState.TryTakeFromJson(
+            key: "albumItemsData",
+            instance: out List<AlbumData>? restoredAlbumItemsData
+        );
 
-        // Get the favorite albums from the API.
-        _albumItems = await httpClient.GetFromJsonAsync<List<AlbumData>?>($"api/favoriteAlbums/{ListYear}");
+        bool isTrackItemsDataAvailable = AppState.TryTakeFromJson(
+            key: "trackItemsData",
+            instance: out List<TrackData>? restoredTrackItemsData
+        );
 
-        // Get the favorite tracks from the API.
-        _trackItems = await httpClient.GetFromJsonAsync<List<TrackData>?>($"api/favoriteTracks/{ListYear}");
+        if (!isAlbumItemsDataAvailable)
+        {
+            using HttpClient httpClient = HttpClientFactory.CreateClient("PublicApi");
+            
+            // Get the favorite albums from the API.
+            _albumItems = await httpClient.GetFromJsonAsync<List<AlbumData>?>($"api/favoriteAlbums/{ListYear}");
+        }
+        else
+        {
+            PageLogger.LogInformation("Album list data was persisted from a prerendered state. Restoring that data instead.");
+            _albumItems = restoredAlbumItemsData;
+        }
+
+        if (!isTrackItemsDataAvailable)
+        {
+            using HttpClient httpClient = HttpClientFactory.CreateClient("PublicApi");
+
+            // Get the favorite tracks from the API.
+            _trackItems = await httpClient.GetFromJsonAsync<List<TrackData>?>($"api/favoriteTracks/{ListYear}");
+        }
+        else
+        {
+            PageLogger.LogInformation("Track list data was persisted from a prerendered state. Restoring that data instead.");
+            _trackItems = restoredTrackItemsData;
+        }
+    }
+
+    private Task PersistFavoritesOfData()
+    {
+        AppState.PersistAsJson(
+            key: "albumItemsData",
+            instance: _albumItems
+        );
+
+        AppState.PersistAsJson(
+            key: "trackItemsData",
+            instance: _trackItems
+        );
+
+        return Task.CompletedTask;
     }
 
     private async Task ScrollToFavoriteAlbums()
@@ -56,5 +115,19 @@ public partial class FavoritesOf : ComponentBase
     private async Task ScrollToFavoriteTracks()
     {
         await _favoriteTracksRef.FocusAsync();
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (disposing)
+        {
+            if (_persistenceSubscription.HasValue)
+            {
+                _persistenceSubscription.Value.Dispose();
+            }
+
+            _albumItems = null;
+            _trackItems = null;
+        }
     }
 }
