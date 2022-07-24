@@ -36,7 +36,7 @@ else
             <meta name="title" property="og:title" content="@_blogEntry.Title / Smalls.Online" />
             <meta name="author" content="Tim Small">
             <meta name="publish_date" property="og:publish_date" content="@(_blogEntry.PostedDate!.Value.ToString("yyyy-MM-ddTHH:mm:sszzz"))">
-            <meta property="og:url" content="https://smalls.online/blog/entry/@_blogEntry!.Id" />
+            <meta property="og:url" content="https://smalls.online/blog/entry/@_blogEntry!.UrlId" />
         </HeadContent>
     }
     <div class="@(ShouldFadeSlideIn is not null && ShouldFadeSlideIn!.Enabled == true ? "fade-slide-in" : "")">
