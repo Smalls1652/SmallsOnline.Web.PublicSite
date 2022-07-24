@@ -30,6 +30,7 @@ public partial class BlogEntryPage : ComponentBase, IDisposable
     private bool _isFinishedLoading = false;
     private PersistingComponentStateSubscription? _persistenceSubscription;
     private BlogEntry? _blogEntry;
+    private string? _blogExcerpt;
 
     public void Dispose()
     {
@@ -42,6 +43,13 @@ public partial class BlogEntryPage : ComponentBase, IDisposable
         _persistenceSubscription = AppState.RegisterOnPersisting(PersistBlogEntryData);
 
         await GetBlogEntry();
+
+        if (_blogEntry is not null && _blogEntry.Content is not null)
+        {
+            _blogExcerpt = _blogEntry.GetExcerpt(
+                asPlainText: true
+            );
+        }
         _isFinishedLoading = true;
 
         await base.OnParametersSetAsync();
