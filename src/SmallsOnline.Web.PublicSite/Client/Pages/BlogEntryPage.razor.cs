@@ -57,10 +57,7 @@ public partial class BlogEntryPage : ComponentBase, IDisposable
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if (firstRender)
-        {
-            await JSRuntime.InvokeVoidAsync("hljs.highlightAll");
-        }
+        await JSRuntime.InvokeVoidAsync("hljs.highlightAll");
 
         await base.OnAfterRenderAsync(firstRender);
     }
