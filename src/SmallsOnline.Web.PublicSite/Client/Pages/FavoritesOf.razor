@@ -2,7 +2,7 @@
 @inherits ComponentBase
 
 @using SmallsOnline.Web.Lib.Models.FavoritesOf.Albums
-@using SmallsOnline.Web.Lib.Models.FavoritesOf.Tracks
+@using SmallsOnline.Web.Lib.Models.FavoritesOf.Songs
 
 @page "/top-music/favorites-of/{ListYear?}"
 
@@ -135,10 +135,10 @@ else
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            @foreach (TrackData trackItem in _trackItems!)
+                            @foreach (SongData songItem in _trackItems!)
                             {
                                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4 pt-3">
-                                    <TrackItem ItemData=@trackItem />
+                                    <SongData ItemData=@songItem />
                                 </div>
                             }
                         </div>
