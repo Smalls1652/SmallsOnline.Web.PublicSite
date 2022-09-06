@@ -31,7 +31,7 @@ public partial class FavoritesOf : ComponentBase, IDisposable
     private List<TrackData>? _trackItems;
 
     private ElementReference _favoriteAlbumsRef;
-    private ElementReference _favoriteTracksRef;
+    private ElementReference _favoriteSongsRef;
 
     public void Dispose()
     {
@@ -114,7 +114,7 @@ public partial class FavoritesOf : ComponentBase, IDisposable
 
     private async Task ScrollToFavoriteTracks()
     {
-        await _favoriteTracksRef.FocusAsync();
+        await _favoriteSongsRef.FocusAsync();
     }
 
     protected virtual void Dispose(bool disposing)
