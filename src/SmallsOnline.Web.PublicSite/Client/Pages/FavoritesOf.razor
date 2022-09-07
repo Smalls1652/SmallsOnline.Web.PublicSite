@@ -2,7 +2,7 @@
 @inherits ComponentBase
 
 @using SmallsOnline.Web.Lib.Models.FavoritesOf.Albums
-@using SmallsOnline.Web.Lib.Models.FavoritesOf.Tracks
+@using SmallsOnline.Web.Lib.Models.FavoritesOf.Songs
 
 @page "/top-music/favorites-of/{ListYear?}"
 
@@ -78,7 +78,7 @@ else
                                         </a>
                                     </li>
                                     <li>
-                                        <a onclick="document.getElementById('favorite-tracks').scrollIntoView({behavior:'smooth'})"
+                                        <a onclick="document.getElementById('favorite-songs').scrollIntoView({behavior:'smooth'})"
                                         class="fs-5 fw-bold text-decoration-none show-pointer-cursor">
                                             Favorite Songs
                                         </a>
@@ -127,18 +127,18 @@ else
 
         <div class="row pt-3">
             <div class="col">
-                <div class="card shadow" id="favorite-tracks" @ref="_favoriteTracksRef">
+                <div class="card shadow" id="favorite-songs" @ref="_favoriteSongsRef">
                     <div class="card-header">
                         <h1 class="mb-0">
-                            Favorite Tracks
+                            Favorite Songs
                         </h1>
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            @foreach (TrackData trackItem in _trackItems!)
+                            @foreach (SongData songItem in _trackItems!)
                             {
                                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4 pt-3">
-                                    <TrackItem ItemData=@trackItem />
+                                    <SongItem ItemData=@songItem />
                                 </div>
                             }
                         </div>

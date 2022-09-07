@@ -1,7 +1,7 @@
 using System.Net.Http.Json;
 
 using SmallsOnline.Web.Lib.Models.FavoritesOf.Albums;
-using SmallsOnline.Web.Lib.Models.FavoritesOf.Tracks;
+using SmallsOnline.Web.Lib.Models.FavoritesOf.Songs;
 
 namespace SmallsOnline.Web.PublicSite.Client;
 
@@ -28,10 +28,10 @@ public partial class FavoritesOf : ComponentBase, IDisposable
     private bool _isFinishedLoading = false;
     private PersistingComponentStateSubscription? _persistenceSubscription;
     private List<AlbumData>? _albumItems;
-    private List<TrackData>? _trackItems;
+    private List<SongData>? _trackItems;
 
     private ElementReference _favoriteAlbumsRef;
-    private ElementReference _favoriteTracksRef;
+    private ElementReference _favoriteSongsRef;
 
     public void Dispose()
     {
@@ -62,7 +62,7 @@ public partial class FavoritesOf : ComponentBase, IDisposable
 
         bool isTrackItemsDataAvailable = AppState.TryTakeFromJson(
             key: "trackItemsData",
-            instance: out List<TrackData>? restoredTrackItemsData
+            instance: out List<SongData>? restoredTrackItemsData
         );
 
         if (!isAlbumItemsDataAvailable)
@@ -83,7 +83,7 @@ public partial class FavoritesOf : ComponentBase, IDisposable
             using HttpClient httpClient = HttpClientFactory.CreateClient("PublicApi");
 
             // Get the favorite tracks from the API.
-            _trackItems = await httpClient.GetFromJsonAsync<List<TrackData>?>($"api/favoriteTracks/{ListYear}");
+            _trackItems = await httpClient.GetFromJsonAsync<List<SongData>?>($"api/favoriteTracks/{ListYear}");
         }
         else
         {
@@ -114,7 +114,7 @@ public partial class FavoritesOf : ComponentBase, IDisposable
 
     private async Task ScrollToFavoriteTracks()
     {
-        await _favoriteTracksRef.FocusAsync();
+        await _favoriteSongsRef.FocusAsync();
     }
 
     protected virtual void Dispose(bool disposing)
