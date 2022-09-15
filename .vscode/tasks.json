@@ -72,6 +72,21 @@
 				"showReuseMessage": false,
 				"clear": true
 			}
+		},
+		{
+			"label": "blazor client: install bootstrap",
+			"type": "process",
+			"command": "dotnet",
+			"args": [
+				"msbuild",
+				"${workspaceFolder}/src/SmallsOnline.Web.PublicSite/Client/",
+				"-target:\"InitBootstrap\"",
+				"-noLogo"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": []
 		}
 	]
 }
