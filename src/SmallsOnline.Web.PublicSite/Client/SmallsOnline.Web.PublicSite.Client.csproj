@@ -35,8 +35,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.9" PrivateAssets="all" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
-    <PackageReference Include="SmallsOnline.Web.Lib" Version="2022.6.8" />
-    <PackageReference Include="SmallsOnline.Web.Lib.Components" Version="2022.6.8" />
+    <PackageReference Include="SmallsOnline.Web.Lib" Version="2022.6.9" />
+    <PackageReference Include="SmallsOnline.Web.Lib.Components" Version="2022.6.9" />
     <PackageReference Include="System.Net.Http.Json" Version="6.0.0" />
   </ItemGroup>
 
