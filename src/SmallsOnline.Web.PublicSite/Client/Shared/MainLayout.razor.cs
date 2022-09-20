@@ -10,6 +10,9 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
     protected NavigationManager NavigationManager { get; set; } = null!;
 
     [Inject]
+    protected ILogger<MainLayout> Logger { get; set; } = null!;
+
+    [Inject]
     protected IJSRuntime JSRuntime { get; set; } = null!;
 
     private IJSObjectReference? _mainLayoutJSModule;
@@ -24,18 +27,17 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
             _mainLayoutJSModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./Shared/MainLayout.razor.js");
 
             NavigationManager.LocationChanged += EnableFadeSlideInOnPageChange;
-
             _isEnableFadeSlideALocationChangeEventMethod = true;
-        }
 
-        await ScrollToAnchorAsync(NavigationManager.Uri);
+            await ScrollToAnchorAsync(NavigationManager.Uri);
+        }
 
         base.OnAfterRender(firstRender);
     }
 
     protected override void OnInitialized()
     {
-        //NavigationManager.LocationChanged += ScrollToAnchorOnLocationChange;
+        NavigationManager.LocationChanged += ScrollToAnchorOnLocationChange;
 
         base.OnInitialized();
     }
@@ -69,7 +71,20 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
 
         if (anchorTagMatch.Success == true && anchorTagMatch.Groups["anchorTagName"].Value is not null)
         {
-            await _mainLayoutJSModule!.InvokeVoidAsync("scrollToAnchorId", anchorTagMatch.Groups["anchorTagName"].Value);
+            bool scrollWasSuccessful = false;
+            for (int i = 1; i < 5 && scrollWasSuccessful == false; i++)
+            {
+                try
+                {
+                    await _mainLayoutJSModule!.InvokeVoidAsync("scrollToAnchorId", anchorTagMatch.Groups["anchorTagName"].Value);
+                    scrollWasSuccessful = true;
+                }
+                catch (JSException e)
+                {
+                    Logger.LogInformation("'{ErrorMessage}' was thrown during loop {LoopCount}.", e.Message, i);
+                    await Task.Delay(1000);
+                }
+            }
         }
     }
 
@@ -87,6 +102,8 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
             {
                 NavigationManager.LocationChanged -= EnableFadeSlideInOnPageChange;
             }
+
+            NavigationManager.LocationChanged -= ScrollToAnchorOnLocationChange;
         }
     }
 }
