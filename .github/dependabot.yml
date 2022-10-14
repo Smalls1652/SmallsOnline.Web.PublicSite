@@ -43,3 +43,13 @@ updates:
       - "dependency update"
     assignees:
       - "Smalls1652"
+  
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    target-branch: "dev"
+    schedule:
+      interval: "daily"
+    labels:
+      - "dependency update"
+    assignees:
+      - "Smalls1652"
