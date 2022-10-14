@@ -45,7 +45,7 @@ jobs:
         working-directory: "src/SmallsOnline.Web.PublicSite/Server/"
 
       - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: .net-app
           path: ${{env.DOTNET_ROOT}}/build
