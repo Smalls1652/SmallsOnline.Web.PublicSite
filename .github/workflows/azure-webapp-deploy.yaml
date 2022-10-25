@@ -1,11 +1,14 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow
 name: Build and deploy to Azure Web App
 
+# When this action will be executed
 on:
+  # Automatically trigger it when detected changes in repo
+  # for tagged releases matching 'v*.*.*'
   push:
-    branches:
-      - stable
-  workflow_dispatch:
+    tags: [ 'v*.*.*' ]
+  # Allow manual trigger 
+  workflow_dispatch: 
 
 jobs:
   build:
