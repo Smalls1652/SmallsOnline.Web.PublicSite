@@ -5,6 +5,6 @@ namespace SmallsOnline.Web.PublicSite.Client;
 /// </summary>
 public partial class AboutMe : ComponentBase
 {
-    [CascadingParameter]
+    [CascadingParameter(Name = "ShouldFadeSlideIn")]
     protected ShouldFadeIn? ShouldFadeSlideIn { get; set; }
 }

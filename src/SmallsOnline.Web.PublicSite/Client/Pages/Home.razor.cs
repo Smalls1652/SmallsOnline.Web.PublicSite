@@ -10,6 +10,6 @@ public partial class Home : ComponentBase
     [Inject]
     protected ILogger<Home> PageLogger { get; set; } = null!;
 
-    [CascadingParameter()]
+    [CascadingParameter(Name = "ShouldFadeSlideIn")]
     protected ShouldFadeIn? ShouldFadeSlideIn { get; set; }
 }
