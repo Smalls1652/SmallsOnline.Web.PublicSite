@@ -17,7 +17,7 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
 
     private IJSObjectReference? _mainLayoutJSModule;
     private ShouldFadeIn _shouldFadeSlideIn = new();
-    private bool _isEnableFadeSlideALocationChangeEventMethod;
+    private bool _isEnableFadeSlideInOnLocationChangeEventMethod;
     private readonly Regex _anchorTagRegex = new("^(?>https|http):\\/\\/.+?\\/.*(?'anchorTag'#(?'anchorTagName'.+))$");
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -27,7 +27,7 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
             _mainLayoutJSModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./Shared/MainLayout.razor.js");
 
             NavigationManager.LocationChanged += EnableFadeSlideInOnPageChange;
-            _isEnableFadeSlideALocationChangeEventMethod = true;
+            _isEnableFadeSlideInOnLocationChangeEventMethod = true;
 
             await ScrollToAnchorAsync(NavigationManager.Uri);
         }
@@ -47,7 +47,7 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
         _shouldFadeSlideIn.Enabled = true;
         StateHasChanged();
         NavigationManager.LocationChanged -= EnableFadeSlideInOnPageChange;
-        _isEnableFadeSlideALocationChangeEventMethod = false;
+        _isEnableFadeSlideInOnLocationChangeEventMethod = false;
     }
 
     /// <summary>
@@ -129,7 +129,7 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
     {
         if (disposing)
         {
-            if (_isEnableFadeSlideALocationChangeEventMethod)
+            if (_isEnableFadeSlideInOnLocationChangeEventMethod)
             {
                 NavigationManager.LocationChanged -= EnableFadeSlideInOnPageChange;
             }
