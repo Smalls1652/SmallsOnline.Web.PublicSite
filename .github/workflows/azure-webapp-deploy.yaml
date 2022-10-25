@@ -7,6 +7,10 @@ on:
   # for tagged releases matching 'v*.*.*'
   push:
     tags: [ 'v*.*.*' ]
+  # Push nightly builds
+  # Should only pull from the latest tag
+  schedule:
+    - cron: 0 0 * * *
   # Allow manual trigger 
   workflow_dispatch: 
 
@@ -16,6 +20,22 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        if: github.event_name == "schedule"
+        with:
+          fetch-depth: 0
+
+      - name: Get latest tag
+        if: github.event_name == "schedule"
+        id: get_latest_tag
+        run: echo "latest_tag=$(git describe --abbrev=0 --tags 'dev')" >> $GITHUB_OUTPUT
+
+      - uses: actions/checkout@v3
+        if: github.event_name == "schedule"
+        with:
+          ref: ${{ steps.get_latest_tag.outputs.latest_tag }}
+
+      - uses: actions/checkout@v3
+        if: github.event_name != "schedule"
 
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v3
