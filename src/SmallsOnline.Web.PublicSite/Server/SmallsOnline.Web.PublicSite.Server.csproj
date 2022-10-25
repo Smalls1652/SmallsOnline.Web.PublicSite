@@ -19,7 +19,7 @@
   <Import Project="../SmallsOnline.Web.PublicSite.version.proj" />
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.*" />
   </ItemGroup>
 
   <ItemGroup>
