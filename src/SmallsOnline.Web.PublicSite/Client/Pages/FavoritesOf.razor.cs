@@ -22,7 +22,7 @@ public partial class FavoritesOf : ComponentBase, IDisposable
     [Parameter]
     public string? ListYear { get; set; }
 
-    [CascadingParameter]
+    [CascadingParameter(Name = "ShouldFadeSlideIn")]
     protected ShouldFadeIn? ShouldFadeSlideIn { get; set; }
 
     private bool _isFinishedLoading = false;

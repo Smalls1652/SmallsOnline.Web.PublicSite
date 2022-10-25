@@ -24,7 +24,7 @@ public partial class BlogEntryPage : ComponentBase, IDisposable
     [Parameter]
     public string Id { get; set; } = null!;
 
-    [CascadingParameter]
+    [CascadingParameter(Name = "ShouldFadeSlideIn")]
     protected ShouldFadeIn? ShouldFadeSlideIn { get; set; }
 
     private bool _isFinishedLoading = false;
