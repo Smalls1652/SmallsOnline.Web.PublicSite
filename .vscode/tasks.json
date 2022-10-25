@@ -3,6 +3,7 @@
 	"tasks": [
 		{
 			"label": "blazor server: dotnet watch",
+			"detail": "Run the Blazor Server for local debugging and watch for changes.",
 			"type": "process",
 			"command": "dotnet",
 			"args": [
@@ -31,6 +32,7 @@
 		},
 		{
 			"label": "blazor: publish web app",
+			"detail": "Run the publish task in the 'Release' configuration.",
 			"type": "process",
 			"command": "dotnet",
 			"args": [
@@ -52,6 +54,7 @@
 		},
 		{
 			"label": "blazor: clean output",
+			"detail": "Clean all files created by the publish task.",
 			"type": "shell",
 			"command": "pwsh",
 			"args": [
@@ -75,6 +78,7 @@
 		},
 		{
 			"label": "blazor client: install bootstrap",
+			"detail": "Install the Bootstrap CSS files for the project.",
 			"type": "process",
 			"command": "dotnet",
 			"args": [
