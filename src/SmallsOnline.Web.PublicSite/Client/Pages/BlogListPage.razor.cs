@@ -20,7 +20,7 @@ public partial class BlogListPage : ComponentBase, IDisposable
     [Parameter]
     public int PageNumber { get; set; } = 1;
 
-    [CascadingParameter]
+    [CascadingParameter(Name = "ShouldFadeSlideIn")]
     protected ShouldFadeIn? ShouldFadeSlideIn { get; set; }
 
     private bool _isFinishedLoading = false;
