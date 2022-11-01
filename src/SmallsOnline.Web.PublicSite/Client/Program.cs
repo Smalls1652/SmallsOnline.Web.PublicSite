@@ -1,6 +1,7 @@
 using System;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.Extensions.Http;
 
 using SmallsOnline.Web.PublicSite.Client;
 
@@ -20,7 +21,12 @@ builder.Services.AddHttpClient(
     }
 );
 
-string apiUri = builder.Configuration.GetValue<string>("ApiUri");
+string? apiUri = builder.Configuration.GetValue<string>("ApiUri");
+
+if (apiUri is null)
+{
+    throw new InvalidOperationException("The API URI was not found in the configuration.");
+}
 
 builder.Services.AddHttpClient(
     name: "PublicApi",
@@ -29,6 +35,8 @@ builder.Services.AddHttpClient(
         client.BaseAddress = new(apiUri);
     }
 );
+
+builder.Services.Remove(builder.Services.First(s => s.ServiceType == typeof(IHttpMessageHandlerBuilderFilter)));
 
 WebAssemblyHost app = builder.Build();
 

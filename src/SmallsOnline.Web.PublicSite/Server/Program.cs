@@ -19,7 +19,12 @@ builder.Services.AddHttpClient(
     }
 );
 
-string apiUri = builder.Configuration.GetValue<string>("ApiUri");
+string? apiUri = builder.Configuration.GetValue<string>("ApiUri");
+
+if (apiUri is null)
+{
+    throw new InvalidOperationException("The API URI was not found in the configuration.");
+}
 
 builder.Services.AddHttpClient(
     name: "PublicApi",
