@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.ResponseCompression;
+using SmallsOnline.Web.PublicSite.Client.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 //builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+
+builder.Services.AddScoped<FavoritesOfStateContainer>();
 
 builder.Services.AddScoped(
     sp => new HttpClient { BaseAddress = new Uri("https://smalls.online/") }
