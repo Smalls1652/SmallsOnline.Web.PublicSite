@@ -1,4 +1,5 @@
 using System.Net.Http.Json;
+using Microsoft.AspNetCore.Components.Routing;
 
 using SmallsOnline.Web.Lib.Models.FavoritesOf.Albums;
 using SmallsOnline.Web.Lib.Models.FavoritesOf.Songs;
@@ -17,7 +18,13 @@ public partial class FavoritesOf : ComponentBase, IDisposable
     protected PersistentComponentState AppState { get; set; } = null!;
 
     [Inject]
-    protected ILogger<BlogEntryPage> PageLogger { get; set; } = null!;
+    protected ILogger<FavoritesOf> PageLogger { get; set; } = null!;
+
+    [Inject]
+    protected NavigationManager NavigationManager { get; set; } = null!;
+
+    [Inject]
+    protected FavoritesOfStateContainer StateContainer { get; set; } = null!;
 
     [Parameter]
     public string? ListYear { get; set; }
@@ -33,6 +40,7 @@ public partial class FavoritesOf : ComponentBase, IDisposable
     private ElementReference _favoriteAlbumsRef;
     private ElementReference _favoriteSongsRef;
 
+
     public void Dispose()
     {
         Dispose(true);
@@ -41,13 +49,37 @@ public partial class FavoritesOf : ComponentBase, IDisposable
 
     protected override async Task OnParametersSetAsync()
     {
-        _isFinishedLoading = false;
+        StateContainer.OnChange += StateHasChanged;
+        NavigationManager.LocationChanged += OnLocationChange;
 
-        _persistenceSubscription = AppState.RegisterOnPersisting(PersistFavoritesOfData);
+        if (ListYear is not null)
+        {
+            _persistenceSubscription = AppState.RegisterOnPersisting(PersistFavoritesOfData);
 
-        await GetFavorites();
+            _isFinishedLoading = false;
 
-        _isFinishedLoading = true;
+            if (ListYear != StateContainer.ListYear)
+            {
+                await GetFavorites();
+                StateContainer.ListYear = ListYear;
+            }
+
+            _isFinishedLoading = true;
+        }
+
+        base.OnParametersSet();
+    }
+
+    private void OnLocationChange(object? sender, LocationChangedEventArgs eventArgs)
+    {
+        if (eventArgs.Location.Contains("/top-music/favorites-of/"))
+        {
+            StateContainer.ListYear = ListYear;
+        }
+        else
+        {
+            StateContainer.ListYear = null;
+        }
     }
 
     /// <summary>
@@ -55,20 +87,21 @@ public partial class FavoritesOf : ComponentBase, IDisposable
     /// </summary>
     private async Task GetFavorites()
     {
+        PageLogger.LogInformation("Loading favorites of {ListYear}", ListYear);
+
         bool isAlbumItemsDataAvailable = AppState.TryTakeFromJson(
-            key: "albumItemsData",
+            key: $"albumItemsData-{ListYear}",
             instance: out List<AlbumData>? restoredAlbumItemsData
         );
 
         bool isTrackItemsDataAvailable = AppState.TryTakeFromJson(
-            key: "trackItemsData",
+            key: $"trackItemsData-{ListYear}",
             instance: out List<SongData>? restoredTrackItemsData
         );
 
+        using HttpClient httpClient = HttpClientFactory.CreateClient("PublicApi");
         if (!isAlbumItemsDataAvailable)
         {
-            using HttpClient httpClient = HttpClientFactory.CreateClient("PublicApi");
-            
             // Get the favorite albums from the API.
             _albumItems = await httpClient.GetFromJsonAsync<List<AlbumData>?>($"api/favoriteAlbums/{ListYear}");
         }
@@ -80,8 +113,6 @@ public partial class FavoritesOf : ComponentBase, IDisposable
 
         if (!isTrackItemsDataAvailable)
         {
-            using HttpClient httpClient = HttpClientFactory.CreateClient("PublicApi");
-
             // Get the favorite tracks from the API.
             _trackItems = await httpClient.GetFromJsonAsync<List<SongData>?>($"api/favoriteTracks/{ListYear}");
         }
@@ -95,12 +126,12 @@ public partial class FavoritesOf : ComponentBase, IDisposable
     private Task PersistFavoritesOfData()
     {
         AppState.PersistAsJson(
-            key: "albumItemsData",
+            key: $"albumItemsData-{ListYear}",
             instance: _albumItems
         );
 
         AppState.PersistAsJson(
-            key: "trackItemsData",
+            key: $"trackItemsData-{ListYear}",
             instance: _trackItems
         );
 
@@ -126,8 +157,8 @@ public partial class FavoritesOf : ComponentBase, IDisposable
                 _persistenceSubscription.Value.Dispose();
             }
 
-            _albumItems = null;
-            _trackItems = null;
+            NavigationManager.LocationChanged -= OnLocationChange;
+            StateContainer.OnChange -= StateHasChanged;
         }
     }
 }
