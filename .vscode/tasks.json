@@ -31,6 +31,80 @@
 			]
 		},
 		{
+			"label": "blazor server: dotnet run debug",
+			"detail": "Run the Blazor Server for local debugging and watch for changes.",
+			"type": "process",
+			"command": "dotnet",
+			"args": [
+				"run",
+				"--configuration",
+				"Debug",
+				"/consoleloggerparameters:NoSummary"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}/src/SmallsOnline.Web.PublicSite/Server",
+				"env": {
+					"ASPNETCORE_ENVIRONMENT": "Development"
+				}
+			},
+			"isBackground": true,
+			"problemMatcher": [
+				{
+					"base": "$msCompile",
+					"background": {
+						"activeOnStart": true,
+						"beginsPattern": "^info: Microsoft.\\Hosting\\.Lifetime",
+						"endsPattern": "^\\s*Application started\\..+?$"
+					}
+				}
+			]
+		},
+		{
+			"label": "blazor: dotnet build server (debug)",
+			"detail": "Run the build task in the 'Debug' configuration.",
+			"type": "process",
+			"command": "dotnet",
+			"args": [
+				"build",
+				"${workspaceFolder}/src/SmallsOnline.Web.PublicSite/Server/",
+				"--configuration",
+				"Debug",
+				"--nologo"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": true,
+				"clear": true
+			},
+			"problemMatcher": [],
+			"dependsOn": [
+				"blazor: dotnet clean server (debug)"
+			]
+		},
+		{
+			"label": "blazor: dotnet clean server (debug)",
+			"detail": "Run the clean task in the 'Debug' configuration.",
+			"type": "process",
+			"command": "dotnet",
+			"args": [
+				"clean",
+				"${workspaceFolder}/src/SmallsOnline.Web.PublicSite/Server/",
+				"--configuration",
+				"Debug",
+				"--nologo"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": []
+		},
+		{
 			"label": "blazor: publish web app",
 			"detail": "Run the publish task in the 'Release' configuration.",
 			"type": "process",
