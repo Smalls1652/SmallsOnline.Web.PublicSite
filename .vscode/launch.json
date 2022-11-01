@@ -6,8 +6,11 @@
             "type": "blazorwasm",
             "request": "launch",
             "browser": "chrome",
-            "cwd": "${workspaceFolder}/src/SmallsOnline.Web.Admin/",
-            "url": "https://localhost:7263"
+            "hosted": true,
+            "program": "${workspaceFolder}/src/SmallsOnline.Web.PublicSite/Server/bin/Debug/net7.0/SmallsOnline.Web.PublicSite.Server.dll",
+            "cwd": "${workspaceFolder}/src/SmallsOnline.Web.PublicSite/Server",
+            "url": "https://localhost:7116",
+            "preLaunchTask": "blazor: dotnet build server (debug)"
         }
     ]
 }
