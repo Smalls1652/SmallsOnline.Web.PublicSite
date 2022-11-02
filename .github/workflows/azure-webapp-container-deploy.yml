@@ -78,4 +78,4 @@ jobs:
             app-name: 'smallsonline-web'
             slot-name: 'production'
             publish-profile: ${{ secrets.AzureAppService_PublishProfile_b1b841cd4dcd4e7f88d9294392235e37 }}
-            images: 'smallsonlinecontainerreg.azurecr.io/${{ secrets.REGISTRY_USERNAME }}/smallsonline-web-publicsite:${{ github.ref_name }}_${{ steps.get_current_ticks.outputs.ticks }}'
+            images: 'smallsonlinecontainerreg.azurecr.io/smallsonline-web-publicsite:${{ github.ref_name }}_${{ steps.get_current_ticks.outputs.ticks }}'
