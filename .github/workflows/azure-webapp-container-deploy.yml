@@ -70,3 +70,12 @@ jobs:
             tags: smallsonlinecontainerreg.azurecr.io/smallsonline-web-publicsite:${{ github.ref_name }}_${{ steps.get_current_ticks.outputs.ticks }}
             file: ./Dockerfile
             context: ./
+
+        - name: Deploy to Azure Web App
+          id: deploy-to-webapp
+          uses: azure/webapps-deploy@v2
+          with:
+            app-name: 'smallsonline-web'
+            slot-name: 'production'
+            publish-profile: ${{ secrets.AzureAppService_PublishProfile_b1b841cd4dcd4e7f88d9294392235e37 }}
+            images: 'smallsonlinecontainerreg.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_b04fcac0f3554b1f91c560f673f4c44c }}/smallsonline-web-publicsite:${{ github.ref_name }}_${{ steps.get_current_ticks.outputs.ticks }}'
