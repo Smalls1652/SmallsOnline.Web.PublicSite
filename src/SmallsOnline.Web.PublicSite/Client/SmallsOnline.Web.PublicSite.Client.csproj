@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
@@ -17,6 +17,7 @@
   </PropertyGroup>
 
   <Import Project="../SmallsOnline.Web.PublicSite.version.proj" />
+  <Import Project="../SmallsOnline.Web.PublicSite.shared.proj" />
 
   <PropertyGroup>
     <RunAOTCompilation>false</RunAOTCompilation>
@@ -32,13 +33,13 @@
 
   <ItemGroup>
     <PackageReference Include="Markdig" Version="0.30.4" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.*" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.*" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="$(CoreDependenciesVersion)" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="$(CoreDependenciesVersion)" PrivateAssets="all" />
+    <PackageReference Include="System.Net.Http.Json" Version="$(CoreDependenciesVersion)" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="$(CoreDependenciesVersion)" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.*" />
-    <PackageReference Include="SmallsOnline.Web.Lib" Version="2022.6.10" />
-    <PackageReference Include="SmallsOnline.Web.Lib.Components" Version="2022.6.10" />
-    <PackageReference Include="System.Net.Http.Json" Version="6.0.*" />
+    <ProjectReference Include="..\..\SmallsOnline.Web.Lib\src\SmallsOnline.Web.Lib\SmallsOnline.Web.Lib.csproj" />
+    <ProjectReference Include="..\..\SmallsOnline.Web.Lib\src\SmallsOnline.Web.Lib.Components\SmallsOnline.Web.Lib.Components.csproj" />
   </ItemGroup>
 
   <ItemGroup>
