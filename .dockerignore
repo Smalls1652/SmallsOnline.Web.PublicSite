@@ -1,0 +1,5 @@
+.git/**
+build/**
+src/**/bin
+src/**/obj
+src/**/node_modules

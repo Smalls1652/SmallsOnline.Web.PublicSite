@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
@@ -17,9 +17,10 @@
   </PropertyGroup>
 
   <Import Project="../SmallsOnline.Web.PublicSite.version.proj" />
+  <Import Project="../SmallsOnline.Web.PublicSite.shared.proj" />
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.*" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="$(CoreDependenciesVersion)" />
   </ItemGroup>
 
   <ItemGroup>
