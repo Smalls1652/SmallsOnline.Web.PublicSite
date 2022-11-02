@@ -1,0 +1,5 @@
+<Project>
+    <PropertyGroup>
+        <CoreDependenciesVersion>7.0*-*</CoreDependenciesVersion>
+    </PropertyGroup>
+</Project>
