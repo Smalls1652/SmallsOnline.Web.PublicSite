@@ -34,8 +34,5 @@ public partial class SiteNavbar : ComponentBase
 
         // Trigger a toggle of the navigation bar.
         ToggleCollapse();
-
-        // Initiate a state change.
-        StateHasChanged();
     }
 }

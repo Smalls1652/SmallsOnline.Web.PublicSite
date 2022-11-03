@@ -45,8 +45,6 @@ public partial class NavbarItems : ComponentBase, IDisposable
 
             // Set the current active page.
             await SetActiveNavItemAsync(currentPage);
-
-            StateHasChanged();
         }
     }
 
@@ -116,9 +114,7 @@ public partial class NavbarItems : ComponentBase, IDisposable
                 // Then add the 'active' class to item for the current page.
                 _activeItem = currentPage;
                 await _navbarItemsJsModule.InvokeVoidAsync("setActiveClass", $"navitem_{_activeItem}");
-
-                // Initiate a state change.
-                StateHasChanged();
+                
             }
             catch
             {
