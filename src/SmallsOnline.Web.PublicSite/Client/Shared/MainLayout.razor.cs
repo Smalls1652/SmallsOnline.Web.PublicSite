@@ -6,14 +6,11 @@ namespace SmallsOnline.Web.PublicSite.Client.Shared;
 
 public partial class MainLayout : LayoutComponentBase, IDisposable
 {
-    [Inject]
-    protected NavigationManager NavigationManager { get; set; } = null!;
+    [Inject] protected NavigationManager NavigationManager { get; set; } = null!;
 
-    [Inject]
-    protected ILogger<MainLayout> Logger { get; set; } = null!;
+    [Inject] protected ILogger<MainLayout> Logger { get; set; } = null!;
 
-    [Inject]
-    protected IJSRuntime JSRuntime { get; set; } = null!;
+    [Inject] protected IJSRuntime JSRuntime { get; set; } = null!;
 
     private IJSObjectReference? _mainLayoutJSModule;
     private ShouldFadeIn _shouldFadeSlideIn = new();
@@ -24,7 +21,8 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
     {
         if (firstRender)
         {
-            _mainLayoutJSModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./Shared/MainLayout.razor.js");
+            _mainLayoutJSModule =
+                await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./Shared/MainLayout.razor.js");
 
             NavigationManager.LocationChanged += EnableFadeSlideInOnPageChange;
             _isEnableFadeSlideInOnLocationChangeEventMethod = true;
@@ -103,7 +101,8 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
                 try
                 {
                     // Attempt to scroll to the element specified in the anchor using JavaScript interop.
-                    await _mainLayoutJSModule!.InvokeVoidAsync("scrollToAnchorId", anchorTagMatch.Groups["anchorTagName"].Value);
+                    await _mainLayoutJSModule!.InvokeVoidAsync("scrollToAnchorId",
+                        anchorTagMatch.Groups["anchorTagName"].Value);
 
                     // If no exception was thrown, then set 'scrollWasSuccessful' to true to end the loop early.
                     scrollWasSuccessful = true;

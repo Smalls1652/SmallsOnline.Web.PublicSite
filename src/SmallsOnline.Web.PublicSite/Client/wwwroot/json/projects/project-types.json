@@ -1,51 +1,51 @@
 [
-    {
-        "projectBaseType": "powershell",
-        "projectType": "PowerShell",
-        "projectIcon": "terminal-fill",
-        "projectIconIsBrand": false,
-        "projectIconColor": "#366A9B"
-    },
-    {
-        "projectBaseType": "powershell",
-        "projectType": "PowerShell (C#)",
-        "projectIcon": "terminal-fill",
-        "projectIconIsBrand": false,
-        "projectIconColor": "#366A9B"
-    },
-    {
-        "projectBaseType": "csharp",
-        "projectType": "Azure Functions (C#)",
-        "projectIcon": "filetype-cs",
-        "projectIconIsBrand": false,
-        "projectIconColor": "#366A9B"
-    },
-    {
-        "projectBaseType": "reactjs",
-        "projectType": "Website (reactJS)",
-        "projectIcon": "globe",
-        "projectIconIsBrand": false,
-        "projectIconColor": "#496e9c"
-    },
-    {
-        "projectBaseType": "javascript",
-        "projectType": "JavaScript",
-        "projectIcon": "file-earmark-code-fill",
-        "projectIconIsBrand": true,
-        "projectIconColor": "#f0db4f"
-    },
-    {
-        "projectBaseType": "python",
-        "projectType": "Python",
-        "projectIcon": "file-earmark-code-fill",
-        "projectIconIsBrand": true,
-        "projectIconColor": "#FFD43B"
-    },
-    {
-        "projectBaseType": "apple",
-        "projectType": "iOS Shortcuts",
-        "projectIcon": "phone-fill",
-        "projectIconIsBrand": true,
-        "projectIconColor": "#000000"
-    }
+  {
+    "projectBaseType": "powershell",
+    "projectType": "PowerShell",
+    "projectIcon": "terminal-fill",
+    "projectIconIsBrand": false,
+    "projectIconColor": "#366A9B"
+  },
+  {
+    "projectBaseType": "powershell",
+    "projectType": "PowerShell (C#)",
+    "projectIcon": "terminal-fill",
+    "projectIconIsBrand": false,
+    "projectIconColor": "#366A9B"
+  },
+  {
+    "projectBaseType": "csharp",
+    "projectType": "Azure Functions (C#)",
+    "projectIcon": "filetype-cs",
+    "projectIconIsBrand": false,
+    "projectIconColor": "#366A9B"
+  },
+  {
+    "projectBaseType": "reactjs",
+    "projectType": "Website (reactJS)",
+    "projectIcon": "globe",
+    "projectIconIsBrand": false,
+    "projectIconColor": "#496e9c"
+  },
+  {
+    "projectBaseType": "javascript",
+    "projectType": "JavaScript",
+    "projectIcon": "file-earmark-code-fill",
+    "projectIconIsBrand": true,
+    "projectIconColor": "#f0db4f"
+  },
+  {
+    "projectBaseType": "python",
+    "projectType": "Python",
+    "projectIcon": "file-earmark-code-fill",
+    "projectIconIsBrand": true,
+    "projectIconColor": "#FFD43B"
+  },
+  {
+    "projectBaseType": "apple",
+    "projectType": "iOS Shortcuts",
+    "projectIcon": "phone-fill",
+    "projectIconIsBrand": true,
+    "projectIconColor": "#000000"
+  }
 ]

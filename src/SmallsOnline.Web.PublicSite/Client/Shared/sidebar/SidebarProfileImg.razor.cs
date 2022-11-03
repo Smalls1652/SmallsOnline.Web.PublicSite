@@ -70,7 +70,7 @@ public partial class SidebarProfileImg : ComponentBase
 
         // This fixes a bug with the state not changing properly in-between the two animations.
         // If this isn't performed, the 'spin-in' animation will not be applied.
-        await Task.Delay(1); 
+        await Task.Delay(1);
         StateHasChanged();
 
         // Wait 800ms to let the 'spin-in' animation finish.

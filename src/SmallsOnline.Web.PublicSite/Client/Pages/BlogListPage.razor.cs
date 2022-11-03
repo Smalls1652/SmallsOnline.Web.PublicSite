@@ -5,20 +5,15 @@ namespace SmallsOnline.Web.PublicSite.Client;
 
 public partial class BlogListPage : ComponentBase, IDisposable
 {
-    [Inject]
-    protected IHttpClientFactory HttpClientFactory { get; set; } = null!;
+    [Inject] protected IHttpClientFactory HttpClientFactory { get; set; } = null!;
 
-    [Inject]
-    protected NavigationManager NavigationManager { get; set; } = null!;
+    [Inject] protected NavigationManager NavigationManager { get; set; } = null!;
 
-    [Inject]
-    protected PersistentComponentState AppState { get; set; } = null!;
+    [Inject] protected PersistentComponentState AppState { get; set; } = null!;
 
-    [Inject]
-    protected ILogger<BlogEntryPage> PageLogger { get; set; } = null!;
+    [Inject] protected ILogger<BlogEntryPage> PageLogger { get; set; } = null!;
 
-    [Parameter]
-    public int PageNumber { get; set; } = 1;
+    [Parameter] public int PageNumber { get; set; } = 1;
 
     [CascadingParameter(Name = "ShouldFadeSlideIn")]
     protected ShouldFadeIn? ShouldFadeSlideIn { get; set; }
@@ -43,7 +38,8 @@ public partial class BlogListPage : ComponentBase, IDisposable
         _persistenceSubscription = AppState.RegisterOnPersisting(PersistBlogListData);
 
         Uri pageUri = new(NavigationManager.Uri);
-        if (pageUri.AbsolutePath == "/blog" || pageUri.AbsolutePath == "/blog/" || pageUri.AbsolutePath == "/blog/list" || pageUri.AbsolutePath == "/blog/list/")
+        if (pageUri.AbsolutePath == "/blog" || pageUri.AbsolutePath == "/blog/" ||
+            pageUri.AbsolutePath == "/blog/list" || pageUri.AbsolutePath == "/blog/list/")
         {
             NavigationManager.NavigateTo(
                 uri: "/blog/list/1",
@@ -74,7 +70,7 @@ public partial class BlogListPage : ComponentBase, IDisposable
             _nextPageBtnDisabled = false;
         }
 
-    _isFinishedLoading = true;
+        _isFinishedLoading = true;
 
         await base.OnParametersSetAsync();
     }
@@ -94,7 +90,8 @@ public partial class BlogListPage : ComponentBase, IDisposable
         }
         else
         {
-            PageLogger.LogInformation("Blog list data was persisted from a prerendered state. Restoring that data instead.");
+            PageLogger.LogInformation(
+                "Blog list data was persisted from a prerendered state. Restoring that data instead.");
             _blogEntries = restoredData;
         }
     }

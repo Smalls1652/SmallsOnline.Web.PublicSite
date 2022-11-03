@@ -4,4 +4,5 @@ namespace SmallsOnline.Web.PublicSite.Client.Shared.AboutMe;
 /// Component for displaying education information.
 /// </summary>
 public partial class AboutMeEducation : ComponentBase
-{}
+{
+}

@@ -1,5 +1,4 @@
 using System.Net.Http.Json;
-
 using SmallsOnline.Web.Lib.Models.Projects;
 
 namespace SmallsOnline.Web.PublicSite.Client;
@@ -9,8 +8,7 @@ namespace SmallsOnline.Web.PublicSite.Client;
 /// </summary>
 public partial class Projects : ComponentBase
 {
-    [Inject]
-    protected IHttpClientFactory HttpClientFactory { get; set; } = null!;
+    [Inject] protected IHttpClientFactory HttpClientFactory { get; set; } = null!;
 
     [CascadingParameter(Name = "ShouldFadeSlideIn")]
     protected ShouldFadeIn? ShouldFadeSlideIn { get; set; }
@@ -29,7 +27,7 @@ public partial class Projects : ComponentBase
             _projectItems = await httpClient.GetFromJsonAsync<List<ProjectItem>?>("json/projects/projects-data.json");
             _projectTypes = await httpClient.GetFromJsonAsync<List<ProjectType>?>("json/projects/project-types.json");
         }
-        
+
         _isFinishedLoading = true;
     }
 }

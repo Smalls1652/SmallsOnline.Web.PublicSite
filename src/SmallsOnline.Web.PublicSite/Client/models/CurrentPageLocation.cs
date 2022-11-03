@@ -6,7 +6,9 @@ public class CurrentPageLocation
 {
     public CurrentPageLocation(string inputUri)
     {
-        Regex uriSectionRegex = new("^(?:https|http)://(?'hostName'.+?)(?'path'/(?'topLevelPage'.*?)(?'secondaryPages'/.*?|))(?:#.*|)$", RegexOptions.Multiline);
+        Regex uriSectionRegex =
+            new("^(?:https|http)://(?'hostName'.+?)(?'path'/(?'topLevelPage'.*?)(?'secondaryPages'/.*?|))(?:#.*|)$",
+                RegexOptions.Multiline);
 
         Match uriSectionMatch = uriSectionRegex.Match(inputUri);
 

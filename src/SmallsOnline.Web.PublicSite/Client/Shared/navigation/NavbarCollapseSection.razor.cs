@@ -11,8 +11,7 @@ public partial class NavbarCollapseSection : ComponentBase
     [CascadingParameter(Name = "Collapsed")]
     protected bool Collapsed { get; set; }
 
-    [Parameter]
-    public RenderFragment? ChildContent { get; set; }
+    [Parameter] public RenderFragment? ChildContent { get; set; }
 
     /// <summary>
     /// Action for indicating the collapse section has been toggled.

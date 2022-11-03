@@ -5,11 +5,9 @@ namespace SmallsOnline.Web.PublicSite.Client.Shared.Navigation;
 /// </summary>
 public partial class SiteNavbar : ComponentBase
 {
-    [Inject]
-    protected ILogger<SiteNavbar> Logger { get; set; } = null!;
+    [Inject] protected ILogger<SiteNavbar> Logger { get; set; } = null!;
 
-    [CascadingParameter]
-    public bool Collapsed { get; set; } = true;
+    [CascadingParameter] public bool Collapsed { get; set; } = true;
 
     /// <summary>
     /// Toggle the collapsed section of the navigation bar.

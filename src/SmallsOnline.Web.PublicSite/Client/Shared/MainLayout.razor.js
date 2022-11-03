@@ -3,8 +3,7 @@ export const scrollToAnchorId = (anchorId) => {
 
     if (foundElement == null) {
         throw `Could not find an element with the ID named '${anchorId}'.`;
-    }
-    else {
+    } else {
         foundElement.scrollIntoView();
     }
 }

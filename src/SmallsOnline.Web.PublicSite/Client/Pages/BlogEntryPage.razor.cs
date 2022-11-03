@@ -6,23 +6,17 @@ namespace SmallsOnline.Web.PublicSite.Client;
 
 public partial class BlogEntryPage : ComponentBase, IDisposable
 {
-    [Inject]
-    protected IHttpClientFactory HttpClientFactory { get; set; } = null!;
+    [Inject] protected IHttpClientFactory HttpClientFactory { get; set; } = null!;
 
-    [Inject]
-    protected NavigationManager NavigationManager { get; set; } = null!;
+    [Inject] protected NavigationManager NavigationManager { get; set; } = null!;
 
-    [Inject]
-    protected IJSRuntime JSRuntime { get; set; } = null!;
+    [Inject] protected IJSRuntime JSRuntime { get; set; } = null!;
 
-    [Inject]
-    protected PersistentComponentState AppState { get; set; } = null!;
+    [Inject] protected PersistentComponentState AppState { get; set; } = null!;
 
-    [Inject]
-    protected ILogger<BlogEntryPage> PageLogger { get; set; } = null!;
+    [Inject] protected ILogger<BlogEntryPage> PageLogger { get; set; } = null!;
 
-    [Parameter]
-    public string Id { get; set; } = null!;
+    [Parameter] public string Id { get; set; } = null!;
 
     [CascadingParameter(Name = "ShouldFadeSlideIn")]
     protected ShouldFadeIn? ShouldFadeSlideIn { get; set; }
@@ -50,6 +44,7 @@ public partial class BlogEntryPage : ComponentBase, IDisposable
                 asPlainText: true
             );
         }
+
         _isFinishedLoading = true;
 
         await base.OnParametersSetAsync();
@@ -84,7 +79,8 @@ public partial class BlogEntryPage : ComponentBase, IDisposable
         }
         else
         {
-            PageLogger.LogInformation("Blog entry data was persisted from a prerendered state. Restoring that data instead.");
+            PageLogger.LogInformation(
+                "Blog entry data was persisted from a prerendered state. Restoring that data instead.");
             _blogEntry = restoredData;
         }
     }

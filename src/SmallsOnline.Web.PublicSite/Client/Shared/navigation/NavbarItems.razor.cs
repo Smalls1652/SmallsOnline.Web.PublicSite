@@ -1,7 +1,5 @@
 using Microsoft.AspNetCore.Components.Routing;
-
 using Microsoft.JSInterop;
-
 using SmallsOnline.Web.PublicSite.Client.Models;
 
 namespace SmallsOnline.Web.PublicSite.Client.Shared.Navigation;
@@ -11,14 +9,11 @@ namespace SmallsOnline.Web.PublicSite.Client.Shared.Navigation;
 /// </summary>
 public partial class NavbarItems : ComponentBase, IDisposable
 {
-    [Inject]
-    protected NavigationManager NavManager { get; set; } = null!;
+    [Inject] protected NavigationManager NavManager { get; set; } = null!;
 
-    [Inject]
-    protected ILogger<NavbarItems> Logger { get; set; } = null!;
+    [Inject] protected ILogger<NavbarItems> Logger { get; set; } = null!;
 
-    [Inject]
-    protected IJSRuntime JSRuntime { get; set; } = null!;
+    [Inject] protected IJSRuntime JSRuntime { get; set; } = null!;
 
     [CascadingParameter(Name = "ToggleChildCollapse")]
     public Action? ToggleChildCollapse { get; set; }
@@ -34,7 +29,8 @@ public partial class NavbarItems : ComponentBase, IDisposable
         if (firstRender)
         {
             // Import the JS module for the component.
-            _navbarItemsJsModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./Shared/navigation/NavbarItems.razor.js");
+            _navbarItemsJsModule =
+                await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./Shared/navigation/NavbarItems.razor.js");
 
             // Get the current URI of the page.
             string? currentPage = GetCurrentPageFromUri(NavManager.Uri);
@@ -114,7 +110,6 @@ public partial class NavbarItems : ComponentBase, IDisposable
                 // Then add the 'active' class to item for the current page.
                 _activeItem = currentPage;
                 await _navbarItemsJsModule.InvokeVoidAsync("setActiveClass", $"navitem_{_activeItem}");
-                
             }
             catch
             {

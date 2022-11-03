@@ -1,6 +1,5 @@
 using System.Net.Http.Json;
 using Microsoft.AspNetCore.Components.Routing;
-
 using SmallsOnline.Web.Lib.Models.FavoritesOf.Albums;
 using SmallsOnline.Web.Lib.Models.FavoritesOf.Songs;
 
@@ -11,23 +10,17 @@ namespace SmallsOnline.Web.PublicSite.Client;
 /// </summary>
 public partial class FavoritesOf : ComponentBase, IDisposable
 {
-    [Inject]
-    protected IHttpClientFactory HttpClientFactory { get; set; } = null!;
+    [Inject] protected IHttpClientFactory HttpClientFactory { get; set; } = null!;
 
-    [Inject]
-    protected PersistentComponentState AppState { get; set; } = null!;
+    [Inject] protected PersistentComponentState AppState { get; set; } = null!;
 
-    [Inject]
-    protected ILogger<FavoritesOf> PageLogger { get; set; } = null!;
+    [Inject] protected ILogger<FavoritesOf> PageLogger { get; set; } = null!;
 
-    [Inject]
-    protected NavigationManager NavigationManager { get; set; } = null!;
+    [Inject] protected NavigationManager NavigationManager { get; set; } = null!;
 
-    [Inject]
-    protected FavoritesOfStateContainer StateContainer { get; set; } = null!;
+    [Inject] protected FavoritesOfStateContainer StateContainer { get; set; } = null!;
 
-    [Parameter]
-    public string? ListYear { get; set; }
+    [Parameter] public string? ListYear { get; set; }
 
     [CascadingParameter(Name = "ShouldFadeSlideIn")]
     protected ShouldFadeIn? ShouldFadeSlideIn { get; set; }
@@ -107,7 +100,8 @@ public partial class FavoritesOf : ComponentBase, IDisposable
         }
         else
         {
-            PageLogger.LogInformation("Album list data was persisted from a prerendered state. Restoring that data instead.");
+            PageLogger.LogInformation(
+                "Album list data was persisted from a prerendered state. Restoring that data instead.");
             _albumItems = restoredAlbumItemsData;
         }
 
@@ -118,7 +112,8 @@ public partial class FavoritesOf : ComponentBase, IDisposable
         }
         else
         {
-            PageLogger.LogInformation("Track list data was persisted from a prerendered state. Restoring that data instead.");
+            PageLogger.LogInformation(
+                "Track list data was persisted from a prerendered state. Restoring that data instead.");
             _trackItems = restoredTrackItemsData;
         }
     }

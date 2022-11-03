@@ -4,4 +4,5 @@ namespace SmallsOnline.Web.PublicSite.Client.Shared.Navigation;
 /// The logo/branding for the site.
 /// </summary>
 public partial class NavbarLogo : ComponentBase
-{ }
+{
+}

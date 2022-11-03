@@ -2,7 +2,6 @@ using System;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Http;
-
 using SmallsOnline.Web.PublicSite.Client;
 using SmallsOnline.Web.PublicSite.Client.Models;
 
@@ -18,10 +17,7 @@ builder.Services.AddScoped(
 
 builder.Services.AddHttpClient(
     name: "BaseAppClient",
-    configureClient: (client) =>
-    {
-        client.BaseAddress = new(builder.HostEnvironment.BaseAddress);
-    }
+    configureClient: (client) => { client.BaseAddress = new(builder.HostEnvironment.BaseAddress); }
 );
 
 string? apiUri = builder.Configuration.GetValue<string>("ApiUri");
@@ -33,10 +29,7 @@ if (apiUri is null)
 
 builder.Services.AddHttpClient(
     name: "PublicApi",
-    configureClient: (client) =>
-    {
-        client.BaseAddress = new(apiUri);
-    }
+    configureClient: (client) => { client.BaseAddress = new(apiUri); }
 );
 
 builder.Services.Remove(builder.Services.First(s => s.ServiceType == typeof(IHttpMessageHandlerBuilderFilter)));

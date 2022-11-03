@@ -4,4 +4,5 @@ namespace SmallsOnline.Web.PublicSite.Client.Shared.Sidebar;
 /// Component for displaying the sidebar.
 /// </summary>
 public partial class SidebarItem : ComponentBase
-{}
+{
+}

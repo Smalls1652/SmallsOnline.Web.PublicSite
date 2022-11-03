@@ -1,111 +1,111 @@
 <Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
-  <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
 
-  <PropertyGroup>
-    <PackageId>SmallsOnline.Web.PublicSite.Client</PackageId>
-    <Authors>Timothy Small</Authors>
-    <Company>Smalls.Online</Company>
-    <RepositoryUrl>https://github.com/Smalls1652/SmallsOnline.Web.PublicSite</RepositoryUrl>
-    <Description>
-      The codebase for the public website of https://smalls.online.
-    </Description>
-  </PropertyGroup>
+    <PropertyGroup>
+        <PackageId>SmallsOnline.Web.PublicSite.Client</PackageId>
+        <Authors>Timothy Small</Authors>
+        <Company>Smalls.Online</Company>
+        <RepositoryUrl>https://github.com/Smalls1652/SmallsOnline.Web.PublicSite</RepositoryUrl>
+        <Description>
+            The codebase for the public website of https://smalls.online.
+        </Description>
+    </PropertyGroup>
 
-  <Import Project="../SmallsOnline.Web.PublicSite.version.proj" />
-  <Import Project="../SmallsOnline.Web.PublicSite.shared.proj" />
+    <Import Project="../SmallsOnline.Web.PublicSite.version.proj"/>
+    <Import Project="../SmallsOnline.Web.PublicSite.shared.proj"/>
 
-  <PropertyGroup>
-    <RunAOTCompilation>false</RunAOTCompilation>
-  </PropertyGroup>
+    <PropertyGroup>
+        <RunAOTCompilation>false</RunAOTCompilation>
+    </PropertyGroup>
 
-  <PropertyGroup>
-    <DirSeparator>$([System.IO.Path]::DirectorySeparatorChar)</DirSeparator>
-    <UserSecretsId>bba9c8d8-3dd6-4f7e-8849-47fa483908df</UserSecretsId>
-  </PropertyGroup>
-  <ItemGroup>
-    <BootstrapFiles Include="$(Bootstrap_CssPath);$(Bootstrap_CssMapPath)" />
-  </ItemGroup>
+    <PropertyGroup>
+        <DirSeparator>$([System.IO.Path]::DirectorySeparatorChar)</DirSeparator>
+        <UserSecretsId>bba9c8d8-3dd6-4f7e-8849-47fa483908df</UserSecretsId>
+    </PropertyGroup>
+    <ItemGroup>
+        <BootstrapFiles Include="$(Bootstrap_CssPath);$(Bootstrap_CssMapPath)"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Markdig" Version="0.30.4" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="$(CoreDependenciesVersion)" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="$(CoreDependenciesVersion)" PrivateAssets="all" />
-    <PackageReference Include="System.Net.Http.Json" Version="$(CoreDependenciesVersion)" />
-    <PackageReference Include="Microsoft.Extensions.Http" Version="$(CoreDependenciesVersion)" />
-    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
-    <ProjectReference Include="..\..\SmallsOnline.Web.Lib\src\SmallsOnline.Web.Lib\SmallsOnline.Web.Lib.csproj" />
-    <ProjectReference Include="..\..\SmallsOnline.Web.Lib\src\SmallsOnline.Web.Lib.Components\SmallsOnline.Web.Lib.Components.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Markdig" Version="0.30.4"/>
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="$(CoreDependenciesVersion)"/>
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="$(CoreDependenciesVersion)" PrivateAssets="all"/>
+        <PackageReference Include="System.Net.Http.Json" Version="$(CoreDependenciesVersion)"/>
+        <PackageReference Include="Microsoft.Extensions.Http" Version="$(CoreDependenciesVersion)"/>
+        <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0"/>
+        <ProjectReference Include="..\..\SmallsOnline.Web.Lib\src\SmallsOnline.Web.Lib\SmallsOnline.Web.Lib.csproj"/>
+        <ProjectReference Include="..\..\SmallsOnline.Web.Lib\src\SmallsOnline.Web.Lib.Components\SmallsOnline.Web.Lib.Components.csproj"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <None Include="node_modules\**">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Include="copyBootstrapFiles.ps1">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Include="package.json">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Include="package-lock.json">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Remove="node_modules\**" />
-  </ItemGroup>
+    <ItemGroup>
+        <None Include="node_modules\**">
+            <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+        </None>
+        <None Include="copyBootstrapFiles.ps1">
+            <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+        </None>
+        <None Include="package.json">
+            <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+        </None>
+        <None Include="package-lock.json">
+            <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+        </None>
+        <None Remove="node_modules\**"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <Compile Remove="node_modules\**" />
-  </ItemGroup>
+    <ItemGroup>
+        <Compile Remove="node_modules\**"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Remove="node_modules\**" />
-  </ItemGroup>
+    <ItemGroup>
+        <EmbeddedResource Remove="node_modules\**"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <Content Remove="node_modules\**" />
-  </ItemGroup>
+    <ItemGroup>
+        <Content Remove="node_modules\**"/>
+    </ItemGroup>
 
-  <PropertyGroup>
-    <BlazorEnableTimeZoneSupport>true</BlazorEnableTimeZoneSupport>
-    <InvariantGlobalization>true</InvariantGlobalization>
-  </PropertyGroup>
+    <PropertyGroup>
+        <BlazorEnableTimeZoneSupport>true</BlazorEnableTimeZoneSupport>
+        <InvariantGlobalization>true</InvariantGlobalization>
+    </PropertyGroup>
 
-  <Target Name="InitProject_Combined">
-    <Message Importance="high" Text="-------------------------------------------------" />
-    <Message Importance="high" Text="Running initialization for Blazor WASM app" />
-    <Message Importance="high" Text="-------------------------------------------------" />
-    <CallTarget Targets="Clean;Restore;InitBootstrap" />
-  </Target>
+    <Target Name="InitProject_Combined">
+        <Message Importance="high" Text="-------------------------------------------------"/>
+        <Message Importance="high" Text="Running initialization for Blazor WASM app"/>
+        <Message Importance="high" Text="-------------------------------------------------"/>
+        <CallTarget Targets="Clean;Restore;InitBootstrap"/>
+    </Target>
 
-  <Target Name="BuildProject_Combined">
-    <Message Importance="high" Text="---------------------------------------" />
-    <Message Importance="high" Text="Running build for Blazor WASM app" />
-    <Message Importance="high" Text="---------------------------------------" />
-    <CallTarget Targets="Clean;Restore;InitBootstrap;Build" />
-  </Target>
+    <Target Name="BuildProject_Combined">
+        <Message Importance="high" Text="---------------------------------------"/>
+        <Message Importance="high" Text="Running build for Blazor WASM app"/>
+        <Message Importance="high" Text="---------------------------------------"/>
+        <CallTarget Targets="Clean;Restore;InitBootstrap;Build"/>
+    </Target>
 
-  <Target Name="InitBootstrap">
-    <CallTarget Targets="InitNPM;InstallBootstrap" />
-  </Target>
+    <Target Name="InitBootstrap">
+        <CallTarget Targets="InitNPM;InstallBootstrap"/>
+    </Target>
 
-  <Target Name="InitNPM">
-    <Message Importance="high" Text="- Running 'npm install'" />
-    <Exec Command="npm install" />
-  </Target>
+    <Target Name="InitNPM">
+        <Message Importance="high" Text="- Running 'npm install'"/>
+        <Exec Command="npm install"/>
+    </Target>
 
-  <Target Name="UpdateBootstrap">
-    <Message Importance="high" Text="- Running 'npm update'" />
-    <Exec Command="npm update bootstrap" />
-  </Target>
+    <Target Name="UpdateBootstrap">
+        <Message Importance="high" Text="- Running 'npm update'"/>
+        <Exec Command="npm update bootstrap"/>
+    </Target>
 
-  <Target Name="InstallBootstrap">
-    <Message Importance="high" Text="- Installing Bootstrap to project" />
-    <Exec Command="pwsh -NoProfile -File copyBootstrapFiles.ps1" />
-  </Target>
+    <Target Name="InstallBootstrap">
+        <Message Importance="high" Text="- Installing Bootstrap to project"/>
+        <Exec Command="pwsh -NoProfile -File copyBootstrapFiles.ps1"/>
+    </Target>
 
 </Project>
