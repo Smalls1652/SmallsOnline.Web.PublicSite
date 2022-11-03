@@ -17,6 +17,7 @@
   </PropertyGroup>
 
   <Import Project="../SmallsOnline.Web.PublicSite.version.proj" />
+  <Import Project="../SmallsOnline.Web.PublicSite.shared.proj" />
 
   <ItemGroup>
     <SupportedPlatform Include="browser" />
