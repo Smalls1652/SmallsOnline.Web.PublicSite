@@ -12,10 +12,10 @@
         Smalls.Online - Favorites of wait... This is null?
     </PageTitle>
     <HeadContent>
-        <meta name="title" property="og:title" content="Smalls.Online - Favorite Music of a null... Year?" />
+        <meta name="title" property="og:title" content="Smalls.Online - Favorite Music of a null... Year?"/>
         <meta name="author" content="Tim Small">
-        <meta property="og:url" content="https://smalls.online/top-music/favorites-of" />
-        <meta property="og:description" content="Smalls's favorite music of... Oof. The year is null for some reason." />
+        <meta property="og:url" content="https://smalls.online/top-music/favorites-of"/>
+        <meta property="og:description" content="Smalls's favorite music of... Oof. The year is null for some reason."/>
     </HeadContent>
 }
 else
@@ -24,10 +24,10 @@ else
         Smalls.Online - Favorites of @ListYear
     </PageTitle>
     <HeadContent>
-        <meta name="title" property="og:title" content="Smalls.Online - Favorite Music of @ListYear" />
+        <meta name="title" property="og:title" content="Smalls.Online - Favorite Music of @ListYear"/>
         <meta name="author" content="Tim Small">
-        <meta property="og:url" content="https://smalls.online/top-music/favorites-of/@ListYear" />
-        <meta property="og:description" content="Smalls's favorite music of @ListYear." />
+        <meta property="og:url" content="https://smalls.online/top-music/favorites-of/@ListYear"/>
+        <meta property="og:description" content="Smalls's favorite music of @ListYear."/>
     </HeadContent>
 }
 @if (_isFinishedLoading == false)
@@ -38,13 +38,13 @@ else
                 <div class="card shadow">
                     <div class="card-header">
                         <h1 class="mb-0">
-                            <i class="bi bi-headphones" /> Favorite Music of @ListYear
+                            <i class="bi bi-headphones"/> Favorite Music of @ListYear
                         </h1>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <LoadingBar />
+                                <LoadingBar/>
                             </div>
                         </div>
                     </div>
@@ -61,7 +61,7 @@ else
                 <div class="card shadow">
                     <div class="card-header">
                         <h1 class="mb-0">
-                            <i class="bi bi-headphones" /> Favorite Music of @ListYear
+                            <i class="bi bi-headphones"/> Favorite Music of @ListYear
                         </h1>
                     </div>
                     <div class="card-body">
@@ -73,13 +73,13 @@ else
                                 <ul>
                                     <li>
                                         <a onclick="document.getElementById('favorite-albums').scrollIntoView({behavior:'smooth'})"
-                                        class="fs-5 fw-bold text-decoration-none show-pointer-cursor">
+                                           class="fs-5 fw-bold text-decoration-none show-pointer-cursor">
                                             Favorite Albums
                                         </a>
                                     </li>
                                     <li>
                                         <a onclick="document.getElementById('favorite-songs').scrollIntoView({behavior:'smooth'})"
-                                        class="fs-5 fw-bold text-decoration-none show-pointer-cursor">
+                                           class="fs-5 fw-bold text-decoration-none show-pointer-cursor">
                                             Favorite Songs
                                         </a>
                                     </li>
@@ -100,23 +100,29 @@ else
                         </h1>
                     </div>
                     <div class="card-body">
-                        <div class="row">
+                        <div class="row pb-3">
                             <div class="col">
-                                <p class="text-muted font-weight-bold">
-                                    <i class="bi bi-star-fill bi-icon-color-gold" /> - This icon means that this is what I
-                                    consider to
-                                    be my personal <span class="font-italic">album of the year</span>.
-                                </p>
+                                <InfoCard>
+                                    <p>
+                                        <i class="bi bi-star-fill bi-icon-color-gold"/> - This icon means that this is what I
+                                        consider to
+                                        be my personal <span class="fst-italic">favorite album of the year</span>.
+                                    </p>
+                                </InfoCard>
                             </div>
                         </div>
-                        @foreach (AlbumData albumItem in _albumItems!)
-                        {
-                            <div class="row pb-3" id="@albumItem.AlbumId">
-                                <div class="col">
-                                    <AlbumItem ItemData=@albumItem />
-                                </div>
+                        <div class="row">
+                            <div class="col">
+                                @foreach (AlbumData albumItem in _albumItems!)
+                                {
+                                    <div class="row pb-3" id="@albumItem.AlbumId">
+                                        <div class="col">
+                                            <AlbumItem ItemData="@albumItem"/>
+                                        </div>
+                                    </div>
+                                }
                             </div>
-                        }
+                        </div>
                     </div>
                 </div>
             </div>
@@ -135,7 +141,7 @@ else
                             @foreach (SongData songItem in _trackItems!)
                             {
                                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4 pt-3">
-                                    <SongItem ItemData=@songItem />
+                                    <SongItem ItemData="@songItem"/>
                                 </div>
                             }
                         </div>
