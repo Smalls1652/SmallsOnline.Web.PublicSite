@@ -17,7 +17,7 @@
 </HeadContent>
 @if (_isFinishedLoading == false)
 {
-    <div class="@(ShouldFadeSlideIn is not null && ShouldFadeSlideIn!.Enabled == true ? "fade-slide-in" : "")">
+    <div class="@(ShouldFadeSlideIn is not null && ShouldFadeSlideIn!.Enabled ? "fade-slide-in" : "")">
         <div class="row">
             <div class="col">
                 <div class="card shadow">
@@ -40,7 +40,7 @@
 }
 else
 {
-    <div class="@(ShouldFadeSlideIn is not null && ShouldFadeSlideIn!.Enabled == true ? "fade-slide-in" : "")">
+    <div class="@(ShouldFadeSlideIn is not null && ShouldFadeSlideIn!.Enabled ? "fade-slide-in" : "")">
         <div class="row pb-2">
             <div class="col">
                 <div class="card shadow">
@@ -57,7 +57,7 @@ else
     </div>
     @if (_blogEntries is not null && _blogEntries.Entries is not null && _blogEntries.Entries.Count != 0)
     {
-        <div class="@(ShouldFadeSlideIn is not null && ShouldFadeSlideIn!.Enabled == true ? "fade-slide-in" : "")">
+        <div class="@(ShouldFadeSlideIn is not null && ShouldFadeSlideIn!.Enabled ? "fade-slide-in" : "")">
             @foreach (BlogEntry blogEntryItem in _blogEntries.Entries)
             {
                 <div class="row pb-2">
@@ -121,7 +121,7 @@ else
                                                     </a>
                                                 </li>
                                             }
-                                            <li class="page-item @(_nextPageBtnDisabled == true ? "disabled" : "")">
+                                            <li class="page-item @(_nextPageBtnDisabled ? "disabled" : "")">
                                                 @if (_nextPageBtnDisabled)
                                                 {
                                                     <a class="page-link">
@@ -147,7 +147,7 @@ else
     }
     else
     {
-        <div class="@(ShouldFadeSlideIn is not null && ShouldFadeSlideIn!.Enabled == true ? "fade-slide-in" : "")">
+        <div class="@(ShouldFadeSlideIn is not null && ShouldFadeSlideIn!.Enabled ? "fade-slide-in" : "")">
             <div class="row">
                 <div class="col">
                     <div class="card shadow">

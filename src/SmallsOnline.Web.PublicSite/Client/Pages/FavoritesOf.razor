@@ -32,7 +32,7 @@ else
 }
 @if (_isFinishedLoading == false)
 {
-    <div class="@(ShouldFadeSlideIn is not null && ShouldFadeSlideIn!.Enabled == true ? "fade-slide-in" : "")">
+    <div class="@(ShouldFadeSlideIn is not null && ShouldFadeSlideIn!.Enabled ? "fade-slide-in" : "")">
         <div class="row">
             <div class="col">
                 <div class="card shadow">
@@ -55,7 +55,7 @@ else
 }
 else
 {
-    <div class="@(ShouldFadeSlideIn is not null && ShouldFadeSlideIn!.Enabled == true ? "fade-slide-in" : "")">
+    <div class="@(ShouldFadeSlideIn is not null && ShouldFadeSlideIn!.Enabled ? "fade-slide-in" : "")">
         <div class="row">
             <div class="col">
                 <div class="card shadow">
