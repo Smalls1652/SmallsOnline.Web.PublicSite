@@ -55,6 +55,19 @@
     <None Include="package-lock.json">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
+    <None Remove="node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="node_modules\**" />
   </ItemGroup>
 
   <PropertyGroup>
