@@ -1,5 +1,6 @@
 <Project>
     <PropertyGroup>
         <CoreDependenciesVersion>7.0*-*</CoreDependenciesVersion>
+        <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
     </PropertyGroup>
 </Project>
