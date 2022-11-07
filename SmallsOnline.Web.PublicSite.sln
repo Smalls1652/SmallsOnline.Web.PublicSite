@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{159B8724-0D09-4177-BFEB-FEC87499694F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SmallsOnline.Web.PublicSite", "SmallsOnline.Web.PublicSite", "{F3FEF5D5-8B53-490D-B914-E96ED4F871E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmallsOnline.Web.PublicSite.Client", "src\SmallsOnline.Web.PublicSite\Client\SmallsOnline.Web.PublicSite.Client.csproj", "{70AC8AA2-AFD0-4F7C-8C3A-B2CF11A9C352}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmallsOnline.Web.PublicSite.Server", "src\SmallsOnline.Web.PublicSite\Server\SmallsOnline.Web.PublicSite.Server.csproj", "{0487B689-DB39-4C40-97FD-B088A442FD8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmallsOnline.Web.PublicSite.Shared", "src\SmallsOnline.Web.PublicSite\Shared\SmallsOnline.Web.PublicSite.Shared.csproj", "{15E0A8D1-B6A3-4AC6-9659-5716584E2043}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SmallsOnline.Web.Lib", "SmallsOnline.Web.Lib", "{5138027D-C88A-4C34-95AD-B784252C30FA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{188EA9D1-A1F5-486B-AD93-3D5AF128A54F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmallsOnline.Web.Lib", "src\SmallsOnline.Web.Lib\src\SmallsOnline.Web.Lib\SmallsOnline.Web.Lib.csproj", "{4C6829D3-3FBA-4274-9330-76F06765F302}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{70AC8AA2-AFD0-4F7C-8C3A-B2CF11A9C352}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70AC8AA2-AFD0-4F7C-8C3A-B2CF11A9C352}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70AC8AA2-AFD0-4F7C-8C3A-B2CF11A9C352}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70AC8AA2-AFD0-4F7C-8C3A-B2CF11A9C352}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0487B689-DB39-4C40-97FD-B088A442FD8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0487B689-DB39-4C40-97FD-B088A442FD8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0487B689-DB39-4C40-97FD-B088A442FD8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0487B689-DB39-4C40-97FD-B088A442FD8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15E0A8D1-B6A3-4AC6-9659-5716584E2043}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15E0A8D1-B6A3-4AC6-9659-5716584E2043}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15E0A8D1-B6A3-4AC6-9659-5716584E2043}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15E0A8D1-B6A3-4AC6-9659-5716584E2043}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C6829D3-3FBA-4274-9330-76F06765F302}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C6829D3-3FBA-4274-9330-76F06765F302}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C6829D3-3FBA-4274-9330-76F06765F302}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C6829D3-3FBA-4274-9330-76F06765F302}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F3FEF5D5-8B53-490D-B914-E96ED4F871E0} = {159B8724-0D09-4177-BFEB-FEC87499694F}
+		{70AC8AA2-AFD0-4F7C-8C3A-B2CF11A9C352} = {F3FEF5D5-8B53-490D-B914-E96ED4F871E0}
+		{0487B689-DB39-4C40-97FD-B088A442FD8E} = {F3FEF5D5-8B53-490D-B914-E96ED4F871E0}
+		{15E0A8D1-B6A3-4AC6-9659-5716584E2043} = {F3FEF5D5-8B53-490D-B914-E96ED4F871E0}
+		{5138027D-C88A-4C34-95AD-B784252C30FA} = {159B8724-0D09-4177-BFEB-FEC87499694F}
+		{188EA9D1-A1F5-486B-AD93-3D5AF128A54F} = {5138027D-C88A-4C34-95AD-B784252C30FA}
+		{4C6829D3-3FBA-4274-9330-76F06765F302} = {188EA9D1-A1F5-486B-AD93-3D5AF128A54F}
+	EndGlobalSection
+EndGlobal
