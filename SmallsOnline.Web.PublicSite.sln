@@ -12,7 +12,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmallsOnline.Web.Lib.Compon
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmallsOnline.Web.PublicSite.version", "src\SmallsOnline.Web.PublicSite\SmallsOnline.Web.PublicSite.version.proj", "{B5B3319B-E182-41FF-8DC7-C14463F620E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmallsOnline.Web.PublicSite.shared", "src\SmallsOnline.Web.PublicSite\SmallsOnline.Web.PublicSite.sharedprops.proj", "{873E36B8-F501-43A6-9D72-E278ECF41924}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmallsOnline.Web.PublicSite.sharedprops", "src\SmallsOnline.Web.PublicSite\SmallsOnline.Web.PublicSite.sharedprops.proj", "{FD1EBC04-A569-407A-894D-34693C12FF77}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
