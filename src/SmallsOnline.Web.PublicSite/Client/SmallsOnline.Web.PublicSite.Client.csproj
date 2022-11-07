@@ -17,10 +17,11 @@
     </PropertyGroup>
 
     <Import Project="../SmallsOnline.Web.PublicSite.version.proj"/>
-    <Import Project="../SmallsOnline.Web.PublicSite.shared.proj"/>
+    <Import Project="../SmallsOnline.Web.PublicSite.sharedprops.proj"/>
 
     <PropertyGroup>
         <RunAOTCompilation>false</RunAOTCompilation>
+        <EmccTotalMemory>16777216</EmccTotalMemory>
     </PropertyGroup>
 
     <PropertyGroup>

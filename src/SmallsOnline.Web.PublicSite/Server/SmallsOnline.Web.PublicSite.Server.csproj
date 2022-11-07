@@ -17,7 +17,7 @@
   </PropertyGroup>
 
   <Import Project="../SmallsOnline.Web.PublicSite.version.proj" />
-  <Import Project="../SmallsOnline.Web.PublicSite.shared.proj" />
+  <Import Project="../SmallsOnline.Web.PublicSite.sharedprops.proj" />
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="$(CoreDependenciesVersion)" />
