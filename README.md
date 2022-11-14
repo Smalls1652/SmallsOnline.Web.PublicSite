@@ -1,3 +1,7 @@
+# ❗ Notice
+
+This repo has been moved to another repo [SmallsOnline.Web](https://github.com/Smalls1652/SmallsOnline.Web).
+
 # Smalls.Online
 
 My personal website built in [Blazor WebAssembly](https://docs.microsoft.com/en-us/aspnet/core/blazor/hosting-models?view=aspnetcore-6.0#blazor-webassembly).
